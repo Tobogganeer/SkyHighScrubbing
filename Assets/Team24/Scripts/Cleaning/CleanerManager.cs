@@ -15,6 +15,8 @@ namespace team24
         public Material copyMaterial;
         public Material blankCopy;
 
+        int _CleaningPower = Shader.PropertyToID("_CleaningPower");
+
         void Start()
         {
             cam = GetComponent<Camera>();
@@ -30,6 +32,7 @@ namespace team24
 
             cam.Render();
             Blit(maskTex, doubleBuffer, blankCopy); // Move the current data in the buffer
+            copyMaterial.SetFloat(_CleaningPower, SqueegeeHead.CleaningPower); // Tell the shader how much we should clean
             Blit(renderTarget, maskTex, copyMaterial); // Copy the current pos into the tex
         }
 
