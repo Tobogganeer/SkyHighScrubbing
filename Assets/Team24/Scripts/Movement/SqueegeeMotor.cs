@@ -67,14 +67,17 @@ namespace team24
             Vector2 desiredPos = currentPos + direction * maxLength;
 
             //Handle movement
+            Vector2 pos2d;
             if (stick == Vector2.zero) 
             {
-                squeegeeObj.transform.position = Vector2.Lerp(squeegeeObj.transform.position, transform.position, lerpSpeed * Time.deltaTime);
+                pos2d = Vector2.Lerp(squeegeeObj.transform.position, transform.position, lerpSpeed * Time.deltaTime);
             }
             else
             {
-                squeegeeObj.transform.position = Vector2.Lerp(squeegeeObj.transform.position, desiredPos, lerpSpeed * Time.deltaTime);
+                pos2d = Vector2.Lerp(squeegeeObj.transform.position, desiredPos, lerpSpeed * Time.deltaTime);
             }
+
+            squeegeeObj.transform.position = new Vector3(pos2d.x, pos2d.y, squeegeeObj.transform.position.z);
         }
     }
 }
