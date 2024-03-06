@@ -43,7 +43,7 @@ namespace team24
             scaffolding.enabled = false;
 
             // Launch them into space (temporary lol)
-            Rigidbody rb = scaffolding.gameObject.AddComponent<Rigidbody>();
+            Rigidbody rb = scaffolding.gameObject.GetComponent<Rigidbody>();
             rb.AddExplosionForce(1000f, Vector3.down * 5, 20f);
             rb.AddTorque(new Vector3(Random.value * 100f, Random.value * 100f, Random.value * 100f));
         }
