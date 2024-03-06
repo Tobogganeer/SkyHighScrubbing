@@ -12,6 +12,10 @@ namespace team24
         [SerializeField] GameObject squeegeeObj;
         [SerializeField] float lerpSpeed;
 
+        WiperPlayerMotor wiper;
+
+        public bool deactivateMovement;
+
         #region Button overrides
         /*
         protected override void OnButton1Pressed(InputAction.CallbackContext context)
@@ -44,6 +48,11 @@ namespace team24
         */
         #endregion
 
+        private void Start()
+        {
+            wiper = GetComponent<WiperPlayerMotor>();
+        }
+
         void Update()
         {
             if (stick != Vector2.zero)
@@ -65,13 +74,23 @@ namespace team24
 
 
             Vector2 currentPos = new Vector2(transform.position.x, transform.position.y);
-            if (button1.IsPressed())
+
+            if (deactivateMovement)
             {
-                desiredPos = currentPos + direction * maxLength;
+                wiper.enabled = false;
+                if (button1.IsPressed())
+                {
+                    desiredPos = currentPos + direction * maxLength;
+                }
+                else
+                {
+                    desiredPos = currentPos + direction;
+                }
             }
             else
             {
-                desiredPos = currentPos + direction;
+                wiper.enabled = true;
+                desiredPos = currentPos + direction * maxLength;
             }
 
 
