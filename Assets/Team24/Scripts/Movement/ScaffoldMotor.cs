@@ -11,6 +11,8 @@ namespace team24
         [SerializeField] float buttonSpeed;
         [SerializeField] float joystickSpeed;
 
+        public static bool UsingButtons { get; private set; }
+
         #region Button overrides
         /*
         protected override void OnButton1Pressed(InputAction.CallbackContext context)
@@ -48,13 +50,23 @@ namespace team24
             direction = stick.normalized;
             Vector3 dir = direction;
 
-            if(button1.IsPressed() && stick == Vector2.zero)
+            // If we aren't moving the joystick
+            if (stick == Vector2.zero)
             {
-                transform.Translate(Vector3.down * buttonSpeed * Time.deltaTime);
+                // Check if we are trying to go up or down quickly
+                if (button1.IsPressed())
+                    transform.Translate(Vector3.up * buttonSpeed * Time.deltaTime);
+                if (button2.IsPressed())
+                    transform.Translate(Vector3.down * buttonSpeed * Time.deltaTime);
+
+                // Tell the squeegee if it should stop
+                UsingButtons = button1.IsPressed() || button2.IsPressed();
             }
             else
             {
                 transform.Translate(dir * joystickSpeed * Time.deltaTime);
+                // The squeegee can go
+                UsingButtons = false;
             }
         }
     }
