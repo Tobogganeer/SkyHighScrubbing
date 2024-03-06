@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6871047578426067721}
   - component: {fileID: 5296246561007147112}
   - component: {fileID: 2017107575451753448}
-  - component: {fileID: 6833925937553924121}
   m_Layer: 0
   m_Name: SqueegeeCam
   m_TagString: Untagged
@@ -129,20 +128,3 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!114 &6833925937553924121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4677393773144343723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 407a6fa07f2912946ad4550ee43eb93c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  renderTarget: {fileID: 8400000, guid: 3a606187a90734a4a8691ec4bdb00dbb, type: 2}
-  doubleBuffer: {fileID: 8400000, guid: 2c865313fa8c0564088c5eb0be51511f, type: 2}
-  maskTex: {fileID: 8400000, guid: 3394dbe3d1cf6af4c8f6ed17100a29d5, type: 2}
-  copyMaterial: {fileID: 2100000, guid: d2c116fd197c6d24795dda8e2697306b, type: 2}
-  blankCopy: {fileID: 2100000, guid: 21957865b34275c4fabdb66bc2553196, type: 2}

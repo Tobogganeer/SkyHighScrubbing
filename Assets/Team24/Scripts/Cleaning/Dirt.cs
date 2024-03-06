@@ -36,6 +36,24 @@ namespace team24
         }
 
         /// <summary>
+        /// Calculates what percent of all surfaces have been cleaned.
+        /// </summary>
+        /// <remarks>This function is expensive!</remarks>
+        /// <returns></returns>
+        public static float CalculateTotalCleanedPercent()
+        {
+            float percent = 0;
+            // Prevent div by 0
+            if (allDirt.Count == 0)
+                return 0f;
+
+            foreach (Dirt dirt in allDirt)
+                percent += dirt.CalculateCleanedPercent() / allDirt.Count;
+
+            return percent;
+        }
+
+        /// <summary>
         /// Calculates what percent of the surface has been cleaned.
         /// </summary>
         /// <remarks>This function is expensive!</remarks>

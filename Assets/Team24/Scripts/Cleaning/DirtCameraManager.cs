@@ -4,10 +4,9 @@ using UnityEngine;
 
 namespace team24
 {
-    [RequireComponent(typeof(Camera))]
-    public class CleanerManager : MonoBehaviour
+    public class DirtCameraManager : MonoBehaviour
     {
-        Camera cam;
+        public Camera cam;
 
         public RenderTexture renderTarget; // Where the squeegee is right now
         public RenderTexture doubleBuffer; // Intermediate
@@ -19,7 +18,12 @@ namespace team24
 
         void Start()
         {
-            cam = GetComponent<Camera>();
+            InitializeTextures();
+        }
+
+        void InitializeTextures()
+        {
+            // Initialize textures to black
             Graphics.Blit(Texture2D.blackTexture, doubleBuffer);
             Graphics.Blit(Texture2D.blackTexture, maskTex);
         }

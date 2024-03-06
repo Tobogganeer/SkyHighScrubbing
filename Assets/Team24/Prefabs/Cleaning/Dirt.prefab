@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1636916477674164464}
   - component: {fileID: 3709250648428198122}
   - component: {fileID: 6854463169923300844}
+  - component: {fileID: 7151981918956361562}
   m_Layer: 0
   m_Name: Dirt
   m_TagString: Untagged
@@ -101,6 +102,24 @@ MonoBehaviour:
   clearThreshold: 235
   dirtExtents: {x: 13.3, y: 10.3}
   areaSubdivisions: {x: 27, y: 18}
+--- !u!114 &7151981918956361562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218242632814749692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 407a6fa07f2912946ad4550ee43eb93c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 8430019127243288273}
+  renderTarget: {fileID: 8400000, guid: 3a606187a90734a4a8691ec4bdb00dbb, type: 2}
+  doubleBuffer: {fileID: 8400000, guid: 2c865313fa8c0564088c5eb0be51511f, type: 2}
+  maskTex: {fileID: 8400000, guid: 3394dbe3d1cf6af4c8f6ed17100a29d5, type: 2}
+  copyMaterial: {fileID: 2100000, guid: d2c116fd197c6d24795dda8e2697306b, type: 2}
+  blankCopy: {fileID: 2100000, guid: 21957865b34275c4fabdb66bc2553196, type: 2}
 --- !u!1001 &4430835686612055737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -161,5 +180,10 @@ PrefabInstance:
 --- !u!4 &7072798531740138928 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6871047578426067721, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+  m_PrefabInstance: {fileID: 4430835686612055737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &8430019127243288273 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5296246561007147112, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
   m_PrefabInstance: {fileID: 4430835686612055737}
   m_PrefabAsset: {fileID: 0}
