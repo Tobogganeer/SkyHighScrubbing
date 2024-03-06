@@ -3,7 +3,27 @@ guid: ae45f87f22bba9842ba083a86742e2d6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: 2100000, guid: 32612eaaabb71f04d81de9faeb35ad8a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gloves
+    second: {fileID: 2100000, guid: 4d7aae74b7dd45f4098cca3026f793bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hard Hat
+    second: {fileID: 2100000, guid: c2ace1f37be594e4880317d5476b506f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Head
+    second: {fileID: 2100000, guid: dddadffd406d5544693802c387ac3664, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
