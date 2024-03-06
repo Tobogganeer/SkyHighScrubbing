@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace team24
 {
-    public class DirtCameraManager : MonoBehaviour
+    public class DirtGPUManager : MonoBehaviour
     {
         public Camera cam;
 
