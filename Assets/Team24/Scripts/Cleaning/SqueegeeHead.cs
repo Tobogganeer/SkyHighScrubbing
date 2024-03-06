@@ -12,10 +12,16 @@ namespace team24
 
         public int lerpCopies = 20;
         public GameObject squeegeePrefab;
+        public float cleaningPower = 10f;
+        public float waterCleaningMultiplier = 4f;
 
         List<Transform> copies = new List<Transform>();
         Vector3 lastPosition;
         Quaternion lastRotation;
+
+        // Static accessor for the CleanerManager
+        public static float CleaningPower { get; private set; }
+        public static float WaterCleaningMultiplier { get; private set; }
 
         private void Start()
         {
@@ -32,6 +38,9 @@ namespace team24
             lastPosition = transform.position;
             lastRotation = transform.rotation;
             Dirt.Clean(transform.position); // Clean on the CPU side too
+
+            CleaningPower = cleaningPower;
+            WaterCleaningMultiplier = waterCleaningMultiplier;
         }
 
         void PositionCopies()

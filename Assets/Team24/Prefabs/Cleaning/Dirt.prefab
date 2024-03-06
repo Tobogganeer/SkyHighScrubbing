@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1636916477674164464}
   - component: {fileID: 3709250648428198122}
   - component: {fileID: 6854463169923300844}
+  - component: {fileID: 7151981918956361562}
   m_Layer: 0
   m_Name: Dirt
   m_TagString: Untagged
@@ -33,6 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7072798531740138928}
+  - {fileID: 2694075002664023494}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -180}
 --- !u!33 &1636916477674164464
@@ -97,10 +99,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2acdeebf38dfc6c48905c94e042257d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cleanMask: {fileID: 8400000, guid: 3394dbe3d1cf6af4c8f6ed17100a29d5, type: 2}
+  gpuManager: {fileID: 7151981918956361562}
   clearThreshold: 235
   dirtExtents: {x: 13.3, y: 10.3}
   areaSubdivisions: {x: 27, y: 18}
+--- !u!114 &7151981918956361562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218242632814749692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 407a6fa07f2912946ad4550ee43eb93c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  squeegeeCam: {fileID: 8430019127243288273}
+  waterCam: {fileID: 3727176747223852711}
+  squeegeePositionTex: {fileID: 8400000, guid: 3a606187a90734a4a8691ec4bdb00dbb, type: 2}
+  waterPositionTex: {fileID: 8400000, guid: 3301073c076a4b447b8d522fe9342adf, type: 2}
+  cleanedBufferTex: {fileID: 8400000, guid: 2c865313fa8c0564088c5eb0be51511f, type: 2}
+  cleanedTex: {fileID: 8400000, guid: 3394dbe3d1cf6af4c8f6ed17100a29d5, type: 2}
+  applySqueegeeCleaningMat: {fileID: 2100000, guid: d2c116fd197c6d24795dda8e2697306b, type: 2}
+  copyTextureMat: {fileID: 2100000, guid: 21957865b34275c4fabdb66bc2553196, type: 2}
+  dirtDisplay: {fileID: 3709250648428198122}
 --- !u!1001 &4430835686612055737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -162,4 +185,84 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6871047578426067721, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
   m_PrefabInstance: {fileID: 4430835686612055737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &8430019127243288273 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5296246561007147112, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+  m_PrefabInstance: {fileID: 4430835686612055737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8807241720860819151
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3094109299272434376}
+    m_Modifications:
+    - target: {fileID: 4677393773144343723, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+      propertyPath: m_Name
+      value: WaterCam
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296246561007147112, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 3301073c076a4b447b8d522fe9342adf, type: 2}
+    - target: {fileID: 5296246561007147112, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
+    - target: {fileID: 6871047578426067721, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6871047578426067721, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.9500003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6871047578426067721, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6871047578426067721, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.00000044002576
+      objectReference: {fileID: 0}
+    - target: {fileID: 6871047578426067721, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00000042088
+      objectReference: {fileID: 0}
+    - target: {fileID: 6871047578426067721, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6871047578426067721, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6871047578426067721, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6871047578426067721, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6871047578426067721, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+--- !u!4 &2694075002664023494 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6871047578426067721, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+  m_PrefabInstance: {fileID: 8807241720860819151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &3727176747223852711 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5296246561007147112, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
+  m_PrefabInstance: {fileID: 8807241720860819151}
   m_PrefabAsset: {fileID: 0}
