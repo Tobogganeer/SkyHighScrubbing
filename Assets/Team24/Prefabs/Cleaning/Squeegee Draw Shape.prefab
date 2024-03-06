@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3358762977328169150}
   m_Layer: 11
-  m_Name: Squeegee Draw Head
+  m_Name: Squeegee Draw Shape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

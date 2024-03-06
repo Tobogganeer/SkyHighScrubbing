@@ -626,7 +626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4654186309142572671, guid: 96e019ef339f6234bbe8b0d8b2c2b6db, type: 3}
       propertyPath: m_Name
-      value: SqueegeeMask
+      value: SqueegeeHead
       objectReference: {fileID: 0}
     - target: {fileID: 7529592267002243143, guid: 96e019ef339f6234bbe8b0d8b2c2b6db, type: 3}
       propertyPath: m_LocalPosition.x

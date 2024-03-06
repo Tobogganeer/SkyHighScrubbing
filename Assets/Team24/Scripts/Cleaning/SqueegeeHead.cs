@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace team24
 {
-    public class SqueegeeMask : MonoBehaviour
+    public class SqueegeeHead : MonoBehaviour
     {
         // This class makes a trail of gameobjects as this object moves
         // This is to prevent gaps in the squeegee due to moving too far
@@ -31,6 +31,7 @@ namespace team24
             PositionCopies();
             lastPosition = transform.position;
             lastRotation = transform.rotation;
+            Dirt.Clean(transform.position); // Clean on the CPU side too
         }
 
         void PositionCopies()
