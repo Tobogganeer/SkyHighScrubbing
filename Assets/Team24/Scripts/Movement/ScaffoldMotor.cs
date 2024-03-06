@@ -7,12 +7,18 @@ namespace team24
 {
     public class ScaffoldMotor : MicrogameInputEvents
     {
-        [SerializeField] float buttonSpeed;
-        [SerializeField] float joystickSpeed;
+        [SerializeField] float buttonSpeed = 10f;
+        [SerializeField] float joystickSpeed = 3f;
+        [SerializeField] float acceleration = 5f;
+
+        [Space]
         [SerializeField] Vector2 xBounds;
         [SerializeField] Vector2 yBounds;
 
+
         Vector2 direction;
+        Vector2 velocity;
+        Vector2 targetVelocity;
 
         public static bool UsingButtons { get; private set; }
 
@@ -51,26 +57,34 @@ namespace team24
         void Update()
         {
             direction = stick.normalized;
-            Vector3 dir = direction;
 
             // If we aren't moving the joystick
             if (stick == Vector2.zero)
             {
+                // Set our target to zero for now
+                targetVelocity = Vector2.zero;
+
                 // Check if we are trying to go up or down quickly
                 if (button1.IsPressed())
-                    transform.Translate(Vector3.up * buttonSpeed * Time.deltaTime);
+                    targetVelocity = Vector3.up * buttonSpeed;
+                //transform.Translate(Vector3.up * buttonSpeed * Time.deltaTime);
                 if (button2.IsPressed())
-                    transform.Translate(Vector3.down * buttonSpeed * Time.deltaTime);
+                    targetVelocity = Vector3.down * buttonSpeed;
+                //transform.Translate(Vector3.down * buttonSpeed * Time.deltaTime);
 
                 // Tell the squeegee if it should stop
                 UsingButtons = button1.IsPressed() || button2.IsPressed();
             }
             else
             {
-                transform.Translate(dir * joystickSpeed * Time.deltaTime);
+                targetVelocity = direction * joystickSpeed;
+                //transform.Translate(direction * joystickSpeed * Time.deltaTime);
                 // The squeegee can go
                 UsingButtons = false;
             }
+
+            velocity = Vector3.Lerp(velocity, targetVelocity, Time.deltaTime * acceleration);
+            transform.Translate(velocity * Time.deltaTime);
 
             // Make sure we don't go out of bounds
             float clampedX = Mathf.Clamp(transform.position.x, xBounds.x, xBounds.y);
