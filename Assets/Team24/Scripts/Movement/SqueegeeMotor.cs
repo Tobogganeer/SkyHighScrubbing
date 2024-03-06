@@ -8,6 +8,7 @@ namespace team24
     public class SqueegeeMotor : MicrogameInputEvents
     {
         Vector2 direction;
+        Vector2 desiredPos;
         [SerializeField] float maxLength;
         [SerializeField] GameObject squeegeeObj;
         [SerializeField] float lerpSpeed;
@@ -63,8 +64,17 @@ namespace team24
                 squeegeeObj.transform.rotation = desiredRot;
             }
 
+
             Vector2 currentPos = new Vector2(transform.position.x, transform.position.y);
-            Vector2 desiredPos = currentPos + direction * maxLength;
+            if (button1.IsPressed())
+            {
+                desiredPos = currentPos + direction * maxLength;
+            }
+            else
+            {
+                desiredPos = currentPos + direction;
+            }
+
 
             //Handle movement
             Vector2 pos2d;
@@ -76,6 +86,7 @@ namespace team24
             {
                 pos2d = Vector2.Lerp(squeegeeObj.transform.position, desiredPos, lerpSpeed * Time.deltaTime);
             }
+
 
             squeegeeObj.transform.position = new Vector3(pos2d.x, pos2d.y, squeegeeObj.transform.position.z);
         }
