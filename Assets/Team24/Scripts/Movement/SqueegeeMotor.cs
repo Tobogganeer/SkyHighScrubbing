@@ -10,7 +10,7 @@ namespace team24
         Vector2 direction;
         [SerializeField] float maxLength;
         [SerializeField] GameObject squeegeeObj;
-        [SerializeField] float speed;
+        [SerializeField] float lerpSpeed;
 
         #region Button overrides
         protected override void OnButton1Pressed(InputAction.CallbackContext context)
@@ -42,13 +42,6 @@ namespace team24
         }
         #endregion
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
         void Update()
         {
             if (stick != Vector2.zero)
@@ -61,7 +54,7 @@ namespace team24
 
             if (Vector3.Distance(squeegeeObj.transform.position, transform.position) > 0.1f)
             {
-                squeegeeObj.transform.rotation = Quaternion.Lerp(squeegeeObj.transform.rotation, desiredRot, speed * Time.deltaTime);
+                squeegeeObj.transform.rotation = Quaternion.Lerp(squeegeeObj.transform.rotation, desiredRot, lerpSpeed * Time.deltaTime);
             }
             else
             {
@@ -74,11 +67,11 @@ namespace team24
             //Handle movement
             if (stick == Vector2.zero) 
             {
-                squeegeeObj.transform.position = Vector2.Lerp(squeegeeObj.transform.position, transform.position, speed * Time.deltaTime);
+                squeegeeObj.transform.position = Vector2.Lerp(squeegeeObj.transform.position, transform.position, lerpSpeed * Time.deltaTime);
             }
             else
             {
-                squeegeeObj.transform.position = Vector2.Lerp(squeegeeObj.transform.position, desiredPos, speed * Time.deltaTime);
+                squeegeeObj.transform.position = Vector2.Lerp(squeegeeObj.transform.position, desiredPos, lerpSpeed * Time.deltaTime);
             }
         }
     }
