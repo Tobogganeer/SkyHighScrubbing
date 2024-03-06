@@ -21,6 +21,14 @@ namespace team24
         public Vector2 dirtExtents;
         public Vector2Int areaSubdivisions;
 
+        List<CPUArea> cpuAreas;
+
+
+        private void Start()
+        {
+            CreateCPUAreas();
+        }
+
         /// <summary>
         /// Calculates what percent of the surface has been cleaned.
         /// </summary>
@@ -60,7 +68,45 @@ namespace team24
 
         private void CreateCPUAreas()
         {
+            if (areaSubdivisions.x <= 0 || areaSubdivisions.y <= 0)
+                throw new System.Exception("Dirt areaSubdivisions are invalid - cannot create CPUAreas!");
 
+            cpuAreas = new List<CPUArea>();
+            // Find out how big each area should be
+            float xStep = dirtExtents.x / areaSubdivisions.x;
+            float yStep = dirtExtents.y / areaSubdivisions.y;
+            Vector2 size = new Vector2(xStep, yStep);
+            Vector3 pos = transform.position - (Vector3)dirtExtents / 2f + (Vector3)size / 2f;
+
+            for (float x = 0; x < dirtExtents.x; x += xStep)
+            {
+                for (float y = 0; y < dirtExtents.y; y += yStep)
+                {
+                    // Create and add each area
+                    cpuAreas.Add(new CPUArea(new Vector3(x, y) + pos, size));
+                }
+            }
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            // Same code as CreateCPUAreas. Draws said areas
+            if (areaSubdivisions.x <= 0 || areaSubdivisions.y <= 0)
+                return;
+
+            float xStep = dirtExtents.x / areaSubdivisions.x;
+            float yStep = dirtExtents.y / areaSubdivisions.y;
+            Vector3 size = new Vector3(xStep, yStep, 0.5f);
+            Vector3 pos = transform.position - (Vector3)dirtExtents / 2f + new Vector3(xStep, yStep) / 2f;
+            Gizmos.color = Color.green;
+
+            for (float x = 0; x < dirtExtents.x; x += xStep)
+            {
+                for (float y = 0; y < dirtExtents.y; y += yStep)
+                {
+                    Gizmos.DrawWireCube(new Vector3(x, y) + pos, size);
+                }
+            }
         }
 
         /// <summary>
@@ -68,15 +114,15 @@ namespace team24
         /// </summary>
         class CPUArea
         {
-            public Vector2 Min { get; private set; }
-            public Vector2 Center { get; private set; }
+            public Vector3 Min { get; private set; }
+            public Vector3 Center { get; private set; }
             public Vector2 Size { get; private set; }
 
-            public CPUArea(Vector2 corner, Vector2 size)
+            public CPUArea(Vector3 corner, Vector2 size)
             {
                 Min = corner;
                 Size = size;
-                Center = Min + size / 2f;
+                Center = Min + (Vector3)size / 2f;
             }
         }
     }
