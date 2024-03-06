@@ -6,11 +6,17 @@ namespace team24
 {
     public class Dirt : MonoBehaviour
     {
-        private static Dirt instance;
-        private void Awake()
+        static List<Dirt> allDirt = new List<Dirt>();
+
+        private void OnEnable()
         {
-            instance = this;
+            allDirt.Add(this);
         }
+        private void OnDisable()
+        {
+            allDirt.Remove(this);
+        }
+
 
         [Header("GPU dirt")]
         public RenderTexture cleanMask;
@@ -34,9 +40,9 @@ namespace team24
         /// </summary>
         /// <remarks>This function is expensive!</remarks>
         /// <returns></returns>
-        public static float CalculateCleanedPercent()
+        public float CalculateCleanedPercent()
         {
-            RenderTexture rt = instance.cleanMask;
+            RenderTexture rt = cleanMask;
             Texture2D buffer = new Texture2D(rt.width, rt.height, TextureFormat.R8, false);
             RenderTexture.active = rt;
 
@@ -56,7 +62,7 @@ namespace team24
             int clearPixels = 0;
             for (int i = 0; i < colours.Length; i++)
             {
-                if (colours[i].r > instance.clearThreshold)
+                if (colours[i].r > clearThreshold)
                 {
                     clearPixels++;
                 }
@@ -93,7 +99,8 @@ namespace team24
         /// <param name="position"></param>
         public static void Clean(Vector3 position)
         {
-            GetClosestArea(position).IsClean = true;
+            foreach (Dirt dirt in allDirt)
+                dirt.GetClosestArea(position).IsClean = true;
         }
 
         /// <summary>
@@ -103,16 +110,20 @@ namespace team24
         /// <returns></returns>
         public static bool IsClean(Vector3 position)
         {
-            return GetClosestArea(position).IsClean;
+            bool isClean = false;
+            foreach (Dirt dirt in allDirt)
+                isClean |= dirt.GetClosestArea(position).IsClean;
+
+            return isClean;
         }
 
-        static CPUArea GetClosestArea(Vector3 position)
+        CPUArea GetClosestArea(Vector3 position)
         {
             CPUArea closest = null;
             float sqrDist = float.PositiveInfinity;
 
             // Very inefficient! Looping hundreds of times...
-            foreach (CPUArea area in instance.cpuAreas)
+            foreach (CPUArea area in cpuAreas)
             {
                 float currentSqrDist = (area.Center - position).sqrMagnitude;
                 if (currentSqrDist < sqrDist)
