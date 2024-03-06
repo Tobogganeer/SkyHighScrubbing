@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cleanMask: {fileID: 8400000, guid: 3394dbe3d1cf6af4c8f6ed17100a29d5, type: 2}
-  clearThreshold: 15
+  clearThreshold: 235
   dirtExtents: {x: 13.3, y: 10.3}
   areaSubdivisions: {x: 27, y: 18}
 --- !u!1001 &4430835686612055737

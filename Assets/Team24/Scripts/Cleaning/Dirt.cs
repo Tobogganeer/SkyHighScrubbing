@@ -15,7 +15,7 @@ namespace team24
         [Header("GPU dirt")]
         public RenderTexture cleanMask;
         [Range(0, 255)]
-        public int clearThreshold = 15;
+        public int clearThreshold = 240;
 
         [Header("CPU dirt")]
         public Vector2 dirtExtents;
@@ -56,7 +56,7 @@ namespace team24
             int clearPixels = 0;
             for (int i = 0; i < colours.Length; i++)
             {
-                if (colours[i].r < instance.clearThreshold)
+                if (colours[i].r > instance.clearThreshold)
                 {
                     clearPixels++;
                 }
