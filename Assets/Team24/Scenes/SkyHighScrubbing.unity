@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getInputFrom: 1
-  maxLength: 2
+  maxLength: 1.5
   squeegeeObj: {fileID: 802971979}
   lerpSpeed: 10
 --- !u!114 &416558265
