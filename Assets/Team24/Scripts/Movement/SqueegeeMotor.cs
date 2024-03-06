@@ -13,6 +13,7 @@ namespace team24
         [SerializeField] float lerpSpeed;
 
         #region Button overrides
+        /*
         protected override void OnButton1Pressed(InputAction.CallbackContext context)
         {
 
@@ -40,6 +41,7 @@ namespace team24
             Debug.Log("Stop action 2");
 
         }
+        */
         #endregion
 
         void Update()
