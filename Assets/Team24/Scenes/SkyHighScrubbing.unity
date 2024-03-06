@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 203844588}
-  m_IndirectSpecularColor: {r: 0.50531393, g: 0.5296858, b: 0.37313548, a: 1}
+  m_IndirectSpecularColor: {r: 0.54127586, g: 0.56343627, b: 0.38625214, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1518,6 +1518,8 @@ MonoBehaviour:
   getInputFrom: 2
   buttonSpeed: 10
   joystickSpeed: 3
+  xBounds: {x: -4.65, y: 4.65}
+  yBounds: {x: -4.5, y: 2.5}
 --- !u!4 &1152614464
 Transform:
   m_ObjectHideFlags: 0
