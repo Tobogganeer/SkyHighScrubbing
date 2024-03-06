@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Character
+    second: {fileID: 2100000, guid: 2bad8464eff260644ab750385d4fcc58, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Gloves
     second: {fileID: 2100000, guid: 4d7aae74b7dd45f4098cca3026f793bf, type: 2}
   - first:
