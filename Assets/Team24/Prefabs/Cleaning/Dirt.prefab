@@ -99,6 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cleanMask: {fileID: 8400000, guid: 3394dbe3d1cf6af4c8f6ed17100a29d5, type: 2}
   clearThreshold: 15
+  dirtExtents: {x: 17.2, y: 14.07}
+  areaSubdivisions: {x: 27, y: 18}
 --- !u!1001 &4430835686612055737
 PrefabInstance:
   m_ObjectHideFlags: 0

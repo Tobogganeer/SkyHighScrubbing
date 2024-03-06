@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45d40f745f98574a9636d2d9e5b31a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpCopies: 20
+  lerpCopies: 50
   squeegeePrefab: {fileID: 5641076599770917567, guid: a2c11c2ed6e5eb64da97c7496c82a530, type: 3}
