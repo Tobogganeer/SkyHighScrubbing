@@ -8,11 +8,11 @@ namespace team24
     {
         public Camera cam;
 
-        public RenderTexture renderTarget; // Where the squeegee is right now
-        public RenderTexture doubleBuffer; // Intermediate
-        public RenderTexture maskTex; // Where all the cleaned glass is
-        public Material copyMaterial;
-        public Material blankCopy;
+        public RenderTexture squeegeePositionTex; // Where the squeegee is right now
+        public RenderTexture cleanedBufferTex; // Intermediate
+        public RenderTexture cleanedTex; // Where all the cleaned glass is
+        public Material applySqueegeeCleaningMat;
+        public Material copyTextureMat;
 
         int _CleaningPower = Shader.PropertyToID("_CleaningPower");
 
@@ -24,8 +24,8 @@ namespace team24
         void InitializeTextures()
         {
             // Initialize textures to black
-            Graphics.Blit(Texture2D.blackTexture, doubleBuffer);
-            Graphics.Blit(Texture2D.blackTexture, maskTex);
+            Graphics.Blit(Texture2D.blackTexture, cleanedBufferTex);
+            Graphics.Blit(Texture2D.blackTexture, cleanedTex);
         }
 
         private void Update()
@@ -35,22 +35,22 @@ namespace team24
                 return;
 
             cam.Render();
-            Blit(maskTex, doubleBuffer, blankCopy); // Move the current data in the buffer
-            copyMaterial.SetFloat(_CleaningPower, SqueegeeHead.CleaningPower); // Tell the shader how much we should clean
-            Blit(renderTarget, maskTex, copyMaterial); // Copy the current pos into the tex
+            Blit(cleanedTex, cleanedBufferTex, copyTextureMat); // Move the current data in the buffer
+            applySqueegeeCleaningMat.SetFloat(_CleaningPower, SqueegeeHead.CleaningPower); // Tell the shader how much we should clean
+            Blit(squeegeePositionTex, cleanedTex, applySqueegeeCleaningMat); // Copy the current pos into the tex
         }
 
         // https://forum.unity.com/threads/forcing-graphics-blit-to-work-can-you-help-me.962373/
         public static void Blit(Texture source, RenderTexture dest, Material mat, int pass = 0, bool executeImmediately = true)
         {
             var original = RenderTexture.active;
-            RenderTexture.active = dest;   /* or Graphics.SetRenderTarget(..) */
+            RenderTexture.active = dest;
 
             if (mat != null)
                 mat.SetTexture("_MainTex", source);
             GL.PushMatrix();
             GL.LoadOrtho();
-            // activate the first shader pass (in this case we know it is the only pass)
+
             if (mat != null)
                 mat.SetPass(pass);
             // draw a quad over whole screen
