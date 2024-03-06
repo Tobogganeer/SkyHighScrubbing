@@ -19,7 +19,7 @@ namespace team24
 
 
         [Header("GPU dirt")]
-        public RenderTexture cleanMask;
+        public DirtGPUManager gpuManager;
         [Range(0, 255)]
         public int clearThreshold = 240;
 
@@ -60,7 +60,7 @@ namespace team24
         /// <returns></returns>
         public float CalculateCleanedPercent()
         {
-            RenderTexture rt = cleanMask;
+            RenderTexture rt = gpuManager.cleanedTex;
             Texture2D buffer = new Texture2D(rt.width, rt.height, TextureFormat.R8, false);
             RenderTexture.active = rt;
 

@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2acdeebf38dfc6c48905c94e042257d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cleanMask: {fileID: 8400000, guid: 3394dbe3d1cf6af4c8f6ed17100a29d5, type: 2}
+  gpuManager: {fileID: 7151981918956361562}
   clearThreshold: 235
   dirtExtents: {x: 13.3, y: 10.3}
   areaSubdivisions: {x: 27, y: 18}
@@ -118,8 +118,9 @@ MonoBehaviour:
   squeegeePositionTex: {fileID: 8400000, guid: 3a606187a90734a4a8691ec4bdb00dbb, type: 2}
   cleanedBufferTex: {fileID: 8400000, guid: 2c865313fa8c0564088c5eb0be51511f, type: 2}
   cleanedTex: {fileID: 8400000, guid: 3394dbe3d1cf6af4c8f6ed17100a29d5, type: 2}
-  applySqueegeeCleaningMat: {fileID: 0}
-  copyTextureMat: {fileID: 0}
+  applySqueegeeCleaningMat: {fileID: 2100000, guid: d2c116fd197c6d24795dda8e2697306b, type: 2}
+  copyTextureMat: {fileID: 2100000, guid: 21957865b34275c4fabdb66bc2553196, type: 2}
+  dirtDisplay: {fileID: 3709250648428198122}
 --- !u!1001 &4430835686612055737
 PrefabInstance:
   m_ObjectHideFlags: 0

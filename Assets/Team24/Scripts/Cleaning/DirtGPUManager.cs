@@ -8,13 +8,25 @@ namespace team24
     {
         public Camera cam;
 
+        [Space]
         public RenderTexture squeegeePositionTex; // Where the squeegee is right now
         public RenderTexture cleanedBufferTex; // Intermediate
         public RenderTexture cleanedTex; // Where all the cleaned glass is
+
+        [Space]
         public Material applySqueegeeCleaningMat;
         public Material copyTextureMat;
 
-        int _CleaningPower = Shader.PropertyToID("_CleaningPower");
+        [Space]
+        public MeshRenderer dirtDisplay;
+        Material dirtMat;
+
+        readonly int _CleaningPower = Shader.PropertyToID("_CleaningPower");
+        readonly int _CleanedBuffer = Shader.PropertyToID("_CleanedBuffer");
+
+        // For dirt material
+        readonly int _CleanedMask = Shader.PropertyToID("_CleanedMask");
+        bool copiedTextures;
 
         void Start()
         {
@@ -23,9 +35,37 @@ namespace team24
 
         void InitializeTextures()
         {
+            // Make our own local copies of the RenderTextures
+            squeegeePositionTex = new RenderTexture(squeegeePositionTex);
+            cleanedBufferTex = new RenderTexture(cleanedBufferTex);
+            cleanedTex = new RenderTexture(cleanedTex);
+            cam.targetTexture = squeegeePositionTex;
+
+            dirtMat = dirtDisplay.material;
+            dirtMat.SetTexture(_CleanedMask, cleanedTex);
+
+            copiedTextures = true;
+
             // Initialize textures to black
             Graphics.Blit(Texture2D.blackTexture, cleanedBufferTex);
             Graphics.Blit(Texture2D.blackTexture, cleanedTex);
+        }
+
+        private void OnDestroy()
+        {
+            if (copiedTextures)
+            {
+                // Remove the tex from the camera to prevent errors
+                cam.targetTexture = null;
+
+                // Destroy the copies we made
+                DestroyImmediate(squeegeePositionTex);
+                DestroyImmediate(cleanedBufferTex);
+                DestroyImmediate(cleanedTex);
+
+                // Destroy the material we copied too
+                DestroyImmediate(dirtMat);
+            }
         }
 
         private void Update()
@@ -37,6 +77,7 @@ namespace team24
             cam.Render();
             Blit(cleanedTex, cleanedBufferTex, copyTextureMat); // Move the current data in the buffer
             applySqueegeeCleaningMat.SetFloat(_CleaningPower, SqueegeeHead.CleaningPower); // Tell the shader how much we should clean
+            applySqueegeeCleaningMat.SetTexture(_CleanedBuffer, cleanedBufferTex); // Set our copy of the cleaned buffer texture
             Blit(squeegeePositionTex, cleanedTex, applySqueegeeCleaningMat); // Copy the current pos into the tex
         }
 

@@ -534,10 +534,10 @@
     "m_Guid": {
         "m_GuidSerialized": "8a86e3c7-434e-402d-b7f8-579063c8a8f5"
     },
-    "m_Name": "CleanMask",
+    "m_Name": "CleanedMask",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "CleanMask",
-    "m_DefaultReferenceName": "_CleanMask",
+    "m_RefNameGeneratedByDisplayName": "CleanedMask",
+    "m_DefaultReferenceName": "_CleanedMask",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -2423,7 +2423,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "c69c3b7be6024a6a941842806354d5b3",
     "m_Id": 0,
-    "m_DisplayName": "CleanMask",
+    "m_DisplayName": "CleanedMask",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
