@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: -0.88}
-  m_LocalScale: {x: 1.7326353, y: 1, z: 1.3795547}
+  m_LocalScale: {x: 1.3112866, y: 0.7568162, z: 1.0440694}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7072798531740138928}
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cleanMask: {fileID: 8400000, guid: 3394dbe3d1cf6af4c8f6ed17100a29d5, type: 2}
   clearThreshold: 15
-  dirtExtents: {x: 17.2, y: 14.07}
+  dirtExtents: {x: 13.3, y: 10.3}
   areaSubdivisions: {x: 27, y: 18}
 --- !u!1001 &4430835686612055737
 PrefabInstance:
@@ -112,14 +112,6 @@ PrefabInstance:
     - target: {fileID: 4677393773144343723, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
       propertyPath: m_Name
       value: SqueegeeCam
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871047578426067721, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.57715523
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871047578426067721, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.72487146
       objectReference: {fileID: 0}
     - target: {fileID: 6871047578426067721, guid: 275fd80ec782ecc40b3f8365d9e38a00, type: 3}
       propertyPath: m_LocalPosition.x
