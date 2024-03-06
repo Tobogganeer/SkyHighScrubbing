@@ -65,7 +65,6 @@ namespace team24
             return (float)clearPixels / colours.Length;
         }
 
-
         private void CreateCPUAreas()
         {
             if (areaSubdivisions.x <= 0 || areaSubdivisions.y <= 0)
@@ -87,6 +86,46 @@ namespace team24
                 }
             }
         }
+
+        /// <summary>
+        /// Cleans the position closest to <paramref name="position"/>.
+        /// </summary>
+        /// <param name="position"></param>
+        public static void Clean(Vector3 position)
+        {
+            GetClosestArea(position).IsClean = true;
+        }
+
+        /// <summary>
+        /// Returns true if the cpu-area closest to <paramref name="position"/> is clean.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
+        public static bool IsClean(Vector3 position)
+        {
+            return GetClosestArea(position).IsClean;
+        }
+
+        static CPUArea GetClosestArea(Vector3 position)
+        {
+            CPUArea closest = null;
+            float sqrDist = float.PositiveInfinity;
+
+            // Very inefficient! Looping hundreds of times...
+            foreach (CPUArea area in instance.cpuAreas)
+            {
+                float currentSqrDist = (area.Center - position).sqrMagnitude;
+                if (currentSqrDist < sqrDist)
+                {
+                    closest = area;
+                    sqrDist = currentSqrDist;
+                }
+            }
+
+            return closest;
+        }
+
+
 
         private void OnDrawGizmosSelected()
         {
@@ -117,12 +156,14 @@ namespace team24
             public Vector3 Min { get; private set; }
             public Vector3 Center { get; private set; }
             public Vector2 Size { get; private set; }
+            public bool IsClean { get; set; }
 
             public CPUArea(Vector3 corner, Vector2 size)
             {
                 Min = corner;
                 Size = size;
                 Center = Min + (Vector3)size / 2f;
+                IsClean = false;
             }
         }
     }
