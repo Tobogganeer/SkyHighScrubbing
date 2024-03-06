@@ -6,10 +6,12 @@ namespace team24
 {
     public class DirtGPUManager : MonoBehaviour
     {
-        public Camera cam;
+        public Camera squeegeeCam;
+        public Camera waterCam;
 
         [Space]
         public RenderTexture squeegeePositionTex; // Where the squeegee is right now
+        public RenderTexture waterPositionTex; // Where water is right now
         public RenderTexture cleanedBufferTex; // Intermediate
         public RenderTexture cleanedTex; // Where all the cleaned glass is
 
@@ -22,7 +24,9 @@ namespace team24
         Material dirtMat;
 
         readonly int _CleaningPower = Shader.PropertyToID("_CleaningPower");
+        readonly int _WaterCleaningMult = Shader.PropertyToID("_WaterCleaningMult");
         readonly int _CleanedBuffer = Shader.PropertyToID("_CleanedBuffer");
+        readonly int _WaterTex = Shader.PropertyToID("_WaterTex");
 
         // For dirt material
         readonly int _CleanedMask = Shader.PropertyToID("_CleanedMask");
@@ -37,9 +41,12 @@ namespace team24
         {
             // Make our own local copies of the RenderTextures
             squeegeePositionTex = new RenderTexture(squeegeePositionTex);
+            waterPositionTex = new RenderTexture(waterPositionTex);
             cleanedBufferTex = new RenderTexture(cleanedBufferTex);
             cleanedTex = new RenderTexture(cleanedTex);
-            cam.targetTexture = squeegeePositionTex;
+
+            squeegeeCam.targetTexture = squeegeePositionTex;
+            waterCam.targetTexture = waterPositionTex;
 
             dirtMat = dirtDisplay.material;
             dirtMat.SetTexture(_CleanedMask, cleanedTex);
@@ -56,10 +63,12 @@ namespace team24
             if (copiedTextures)
             {
                 // Remove the tex from the camera to prevent errors
-                cam.targetTexture = null;
+                squeegeeCam.targetTexture = null;
+                waterCam.targetTexture = null;
 
                 // Destroy the copies we made
                 DestroyImmediate(squeegeePositionTex);
+                DestroyImmediate(waterPositionTex);
                 DestroyImmediate(cleanedBufferTex);
                 DestroyImmediate(cleanedTex);
 
@@ -74,10 +83,13 @@ namespace team24
             if (ScaffoldMotor.UsingButtons)
                 return;
 
-            cam.Render();
+            squeegeeCam.Render();
             Blit(cleanedTex, cleanedBufferTex, copyTextureMat); // Move the current data in the buffer
+
             applySqueegeeCleaningMat.SetFloat(_CleaningPower, SqueegeeHead.CleaningPower); // Tell the shader how much we should clean
+            applySqueegeeCleaningMat.SetFloat(_WaterCleaningMult, SqueegeeHead.WaterCleaningMultiplier); // Tell the shader how much water helps
             applySqueegeeCleaningMat.SetTexture(_CleanedBuffer, cleanedBufferTex); // Set our copy of the cleaned buffer texture
+            applySqueegeeCleaningMat.SetTexture(_WaterTex, waterPositionTex);
             Blit(squeegeePositionTex, cleanedTex, applySqueegeeCleaningMat); // Copy the current pos into the tex
         }
 
