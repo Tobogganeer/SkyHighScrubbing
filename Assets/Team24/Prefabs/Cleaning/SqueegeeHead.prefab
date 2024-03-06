@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpCopies: 50
   squeegeePrefab: {fileID: 5641076599770917567, guid: a2c11c2ed6e5eb64da97c7496c82a530, type: 3}
-  cleaningPower: 8
-  waterCleaningMultiplier: 6
+  cleaningPower: 12
+  waterCleaningMultiplier: 5
 --- !u!1001 &883315170800117268
 PrefabInstance:
   m_ObjectHideFlags: 0
