@@ -56,4 +56,9 @@ MonoBehaviour:
   - Jonathan To
   - Shane Morrison
   - Evan Daveikis
-  licensedWorksCredits: []
+  licensedWorksCredits:
+  - titleOfWork: Table Mountain 2 (HDRI)
+    creator: Greg Zaal & Jarod Guest
+    source: PolyHaven
+    url: https://polyhaven.com/a/table_mountain_2_puresky
+    licence: CC0
