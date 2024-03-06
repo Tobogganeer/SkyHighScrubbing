@@ -362,13 +362,23 @@ public class MicrogamesManager : MonoBehaviour
             return;
         } else {
             _quickTestModeScene = currentScene.path;
+            if (string.IsNullOrEmpty(_quickTestModeScene)) {
+                Debug.LogWarning("Save this scene before you can use it with the Microgame Framework.");
+                return;
+            }
         }
 
         // Check for game objects with components inheriting from MicrogameEvents or MicrogameInputEvents
-        MicrogameEvents[] microgameEventsComponents = FindObjectsOfType<MicrogameEvents>(true);
+        var microgameEventsComponent = FindAnyObjectByType<MicrogameEvents>(FindObjectsInactive.Include);
 
         // If no such components are found, load the microMix scene
-        if (microgameEventsComponents.Length > 0) { // || microgameInputEventsComponents.Length > 0) {
+        if (microgameEventsComponent != null) { // || microgameInputEventsComponents.Length > 0) {
+            var frameworkScene = UnityEditor.AssetDatabase.LoadMainAssetAtPath(FrameworkScenePath);
+            if (frameworkScene == null) {
+                Debug.LogError($"Could not find framework scene at {FrameworkScenePath} - make sure you did not delete, move, or rename it!");
+                // Abort so error is addressed right away.
+                UnityEditor.EditorApplication.ExitPlaymode();
+            }
             SceneManager.LoadScene(FrameworkScenePath);
         } else {
             Debug.Log("Skipped loading microMix because no existing game objects with MicrogameEvents or MicrogameInputEvents components.");
