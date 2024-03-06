@@ -2812,6 +2812,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9ded537815874d2439dca5e80c9571ab, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e506d15e12e9c14b83c5d0bc7cf48c1, type: 2}
     - target: {fileID: 919132149155446097, guid: 9ded537815874d2439dca5e80c9571ab, type: 3}
       propertyPath: m_Name
       value: Scaffolding
@@ -4574,6 +4578,7 @@ MonoBehaviour:
   waterSprayPrefab: {fileID: 4110725095024006275, guid: 0c09c56aa54b2e349929637f9c00c5e0, type: 3}
   cooldown: 1.5
   velocityRange: {x: 0.5, y: 2}
+  bonusVerticalVelocity: 1.75
   leftSprayPos: {fileID: 306353828}
   rightSprayPos: {fileID: 769482138}
 --- !u!1001 &1852710575
