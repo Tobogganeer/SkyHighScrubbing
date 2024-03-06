@@ -92,7 +92,7 @@ namespace team24
             transform.position = new Vector3(clampedX, clampedY, transform.position.z);
         }
 
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             // Draw the limits of where we can go
             Gizmos.color = Color.yellow;

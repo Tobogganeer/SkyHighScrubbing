@@ -24,6 +24,10 @@ namespace team24
 
         private void Update()
         {
+            // Don't squeegee if we are moving quickly up or down
+            if (ScaffoldMotor.UsingButtons)
+                return;
+
             cam.Render();
             Blit(maskTex, doubleBuffer, blankCopy); // Move the current data in the buffer
             Blit(renderTarget, maskTex, copyMaterial); // Copy the current pos into the tex
