@@ -59,6 +59,7 @@ namespace team24
             direction = stick.normalized;
 
             // If we aren't moving the joystick
+            /*
             if (stick == Vector2.zero)
             {
                 // Set our target to zero for now
@@ -77,11 +78,12 @@ namespace team24
             }
             else
             {
-                targetVelocity = direction * joystickSpeed;
-                //transform.Translate(direction * joystickSpeed * Time.deltaTime);
-                // The squeegee can go
-                UsingButtons = false;
-            }
+            */
+            targetVelocity = direction * joystickSpeed;
+            //transform.Translate(direction * joystickSpeed * Time.deltaTime);
+            // The squeegee can go
+            UsingButtons = false;
+            //}
 
             velocity = Vector3.Lerp(velocity, targetVelocity, Time.deltaTime * acceleration);
             transform.Translate(velocity * Time.deltaTime);
