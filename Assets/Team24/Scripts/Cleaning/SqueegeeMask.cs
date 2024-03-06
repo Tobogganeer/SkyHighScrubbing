@@ -21,6 +21,7 @@ namespace team24
         {
             lastPosition = transform.position;
             lastRotation = transform.rotation;
+            // Spawn the copies of the brush
             for (int i = 0; i < lerpCopies; i++)
                 copies.Add(Instantiate(squeegeePrefab, transform).transform);
         }
@@ -42,6 +43,7 @@ namespace team24
 
             for (int i = 0; i < copies.Count; i++)
             {
+                // Move each copy a step of the way from our last-current position
                 float fac = (float)i / copies.Count;
                 copies[i].position = Vector3.Lerp(start, end, fac);
                 copies[i].rotation = Quaternion.Slerp(startRot, endRot, fac);
