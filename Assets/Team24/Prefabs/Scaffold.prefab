@@ -414,7 +414,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getInputFrom: 2
-  waterSprayPrefab: {fileID: 4110725095024006275, guid: 0c09c56aa54b2e349929637f9c00c5e0, type: 3}
+  waterSprayPrefabs:
+  - {fileID: 4110725095024006275, guid: 0c09c56aa54b2e349929637f9c00c5e0, type: 3}
+  - {fileID: 4110725095024006275, guid: 1fab910a28228424ea01a39a632d5fb6, type: 3}
   cooldown: 0
   velocityRange: {x: 0.5, y: 3}
   bonusVerticalVelocity: 1.75
