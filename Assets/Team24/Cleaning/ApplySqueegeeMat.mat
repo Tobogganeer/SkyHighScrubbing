@@ -70,9 +70,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CleaningPower: 12
+    - _CleaningPower: 15
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _WaterCleaningMult: 5
+    - _WaterCleaningMult: 7.5
     m_Colors: []
   m_BuildTextureStacks: []
