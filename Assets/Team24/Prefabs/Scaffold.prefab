@@ -355,10 +355,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getInputFrom: 1
-  maxLength: 2
+  controlMode: 1
   squeegeeObj: {fileID: 4005929431254294982}
+  maxLength: 1.65
   lerpSpeed: 10
-  deactivateMovement: 0
+  moveLerpSpeed: 8
+  rotateSlerpSpeed: 4
+  rotationSpeed: 360
+  extensionSpeed: 5
 --- !u!1 &4746320307808702095
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,9 +411,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getInputFrom: 2
   waterSprayPrefab: {fileID: 4110725095024006275, guid: 0c09c56aa54b2e349929637f9c00c5e0, type: 3}
-  cooldown: 1.5
-  velocityRange: {x: 0.5, y: 2}
+  cooldown: 0
+  velocityRange: {x: 0.5, y: 3}
   bonusVerticalVelocity: 1.75
+  scaleRange: {x: 0.5, y: 1.25}
   leftSprayPos: {fileID: 814493240594687902}
   rightSprayPos: {fileID: 5222255019142219075}
 --- !u!1 &7798884468217398906

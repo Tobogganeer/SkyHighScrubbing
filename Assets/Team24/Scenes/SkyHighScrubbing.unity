@@ -1583,18 +1583,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 777887402069829336, guid: 335ddfd9759387c47bf423965aa1408b, type: 3}
-      propertyPath: cooldown
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 777887402069829336, guid: 335ddfd9759387c47bf423965aa1408b, type: 3}
-      propertyPath: velocityRange.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 863903031374743108, guid: 335ddfd9759387c47bf423965aa1408b, type: 3}
-      propertyPath: maxLength
-      value: 1.65
-      objectReference: {fileID: 0}
     - target: {fileID: 1376319425427384903, guid: 335ddfd9759387c47bf423965aa1408b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
