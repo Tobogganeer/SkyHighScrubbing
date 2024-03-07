@@ -16,11 +16,15 @@ namespace team24
         // NOTE FOR COMPLIANCE TESTERS:
         // "I'll dig into this after lunch. Worst-case, I think the script you showed should be compliant." -Douglass Gregary
         // See "Possibility for better default shadow quality" on Teams #Support-Technologist
+        // NOTE V2:
+        // This script is no longer used.
         //
         // ====================================================================================================================
 
 
         public UniversalRenderPipelineAsset rpAsset;
+
+        /*
 
         int oldCascades; // 1 lol
         bool oldSoftShadows; // false :/
@@ -52,5 +56,7 @@ namespace team24
             rpAsset.shadowCascadeCount = oldCascades;
             softShadowsField.SetValue(rpAsset, oldSoftShadows);
         }
+
+        */
     }
 }
