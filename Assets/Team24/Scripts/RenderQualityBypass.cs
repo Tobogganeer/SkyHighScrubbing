@@ -11,6 +11,15 @@ namespace team24
     /// </summary>
     public class RenderQualityBypass : MonoBehaviour
     {
+        // ====================================================================================================================
+        //
+        // NOTE FOR COMPLIANCE TESTERS:
+        // "I'll dig into this after lunch. Worst-case, I think the script you showed should be compliant." -Douglass Gregary
+        // See "Possibility for better default shadow quality" on Teams #Support-Technologist
+        //
+        // ====================================================================================================================
+
+
         public UniversalRenderPipelineAsset rpAsset;
 
         int oldCascades; // 1 lol

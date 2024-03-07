@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d24fbde2c24ab1544bd81b52842e8ec5, type: 3}
-  m_Name: SkyHighScrubbing
+  m_Name: T24_SkyHighScrubbing
   m_EditorClassIdentifier: 
   includeInRandomizer: 1
   teamNumber: 24
@@ -26,14 +26,10 @@ MonoBehaviour:
     primary: 124
     joiner: 0
     secondary: 0
-  - label: Walk Left
+  - label: Rotate Squeegee
     primary: 17
     joiner: 0
-    secondary: 0
-  - label: Walk Right
-    primary: 18
-    joiner: 0
-    secondary: 0
+    secondary: 18
   rightPlayerAltControls:
   - label: Move Platform
     primary: 124
