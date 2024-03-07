@@ -19,6 +19,14 @@ namespace team24
         [SerializeField] float rotationSpeed = 360f;
         [SerializeField] float extensionSpeed = 5f;
 
+        [Header("Squeegee Head Tilt")]
+        public bool buttonsControlSqueegeeHeadTilt = true;
+        public Transform squeegeeHead;
+        public float headTiltSpeed = 90f;
+        public float headTiltAngle = 45f;
+
+        float headTilt;
+
         Vector2 direction;
         Vector2 desiredPos;
 
@@ -35,6 +43,8 @@ namespace team24
                 PointTowardsJoystick();
             else
                 InOutRotate();
+
+            TiltHead();
         }
 
         void PointTowardsJoystick()
@@ -92,6 +102,22 @@ namespace team24
 
             squeegeeObj.transform.position = Vector3.Lerp(squeegeeObj.transform.position, targetPos, moveLerpSpeed * Time.deltaTime);
             squeegeeObj.transform.rotation = Quaternion.Slerp(squeegeeObj.transform.rotation, targetRot, rotateSlerpSpeed * Time.deltaTime);
+        }
+
+        void TiltHead()
+        {
+            // Calculate current tilt
+            if (buttonsControlSqueegeeHeadTilt)
+            {
+                int dir = 0;
+                if (button1.IsPressed()) dir--;
+                if (button2.IsPressed()) dir++;
+                headTilt = Mathf.MoveTowards(headTilt, dir * headTiltAngle, Time.deltaTime * headTiltSpeed);
+            }
+            else
+                headTilt = 0f;
+
+            squeegeeHead.transform.localRotation = Quaternion.Euler(0, 0, headTilt);
         }
 
         public enum ControlMode
