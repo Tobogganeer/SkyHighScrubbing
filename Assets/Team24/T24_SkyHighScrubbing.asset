@@ -15,7 +15,7 @@ MonoBehaviour:
   includeInRandomizer: 1
   teamNumber: 24
   gameTitle: Sky-High Scrubbing
-  gameIcon: {fileID: 21300000, guid: 5e09699f40c1fc8429892dced0aaadc5, type: 3}
+  gameIcon: {fileID: 21300000, guid: d1e2a7a321935eb48aa56e3a539fe9af, type: 3}
   announcerText: Squeegee
   announcerAudioFile: Squeegee-RX10MDc_292-01
   _announcerAudio: {fileID: 8300000, guid: 3c0495f0d6f0cd04bac03e8f6809bbe6, type: 3}
@@ -36,7 +36,7 @@ MonoBehaviour:
     joiner: 0
     secondary: 26
   singlePlayerScenePath: 
-  twoPlayerScenePath: Assets/Team24/Scenes/SkyHighScrubbing 1.unity
+  twoPlayerScenePath: Assets/Team24/Scenes/SkyHighScrubbing.unity
   postgameMessages:
   - Squeaky clean!
   - Crystal clear!
