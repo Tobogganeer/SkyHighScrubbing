@@ -630,7 +630,7 @@ MonoBehaviour:
   rotateSlerpSpeed: 4
   rotationSpeed: 360
   extensionSpeed: 5
-  buttonsControlSqueegeeHeadTilt: 1
+  buttonsControlSqueegeeHeadTilt: 0
   squeegeeHead: {fileID: 7333040261174022407}
   headTiltSpeed: 90
   headTiltAngle: 45

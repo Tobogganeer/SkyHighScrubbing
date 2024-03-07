@@ -26,10 +26,6 @@ MonoBehaviour:
     primary: 124
     joiner: 0
     secondary: 0
-  - label: Rotate Squeegee
-    primary: 17
-    joiner: 0
-    secondary: 18
   rightPlayerAltControls:
   - label: Move Platform
     primary: 124
