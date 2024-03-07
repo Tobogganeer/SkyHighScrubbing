@@ -7,6 +7,8 @@ namespace team24
 {
     public class ScaffoldMotor : MicrogameInputEvents
     {
+        // This is old, unused code
+        /*
         [SerializeField] float buttonSpeed = 10f;
         [SerializeField] float joystickSpeed = 3f;
         [SerializeField] float acceleration = 5f;
@@ -103,5 +105,6 @@ namespace team24
             Vector3 size = max - min;
             Gizmos.DrawWireCube(min + size / 2f, size);
         }
+        */
     }
 }
