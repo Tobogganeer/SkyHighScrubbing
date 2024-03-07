@@ -11,6 +11,7 @@ namespace team24
         public float cooldown = 1.5f;
         public Vector2 velocityRange = new Vector2(0.5f, 2f);
         public float bonusVerticalVelocity = 1.75f;
+        public Vector2 scaleRange = new Vector2(0.5f, 1.25f);
 
         [Space]
         public Transform leftSprayPos;
@@ -49,6 +50,7 @@ namespace team24
             Quaternion rot = Quaternion.LookRotation(Vector3.up, Vector3.back);
             GameObject spray = Instantiate(waterSprayPrefab, position, rot);
             spray.transform.Rotate(new Vector3(0, Random.Range(0f, 360f), 0), Space.Self);
+            spray.transform.localScale *= Random.Range(scaleRange.x, scaleRange.y);
 
             // Apply a random velocity
             Vector3 randomVelocity = Random.insideUnitCircle.normalized * Random.Range(velocityRange.x, velocityRange.y);
