@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: SkyHighScrubbing
   m_EditorClassIdentifier: 
   includeInRandomizer: 1
-  teamNumber: 0
+  teamNumber: 24
   gameTitle: Sky-High Scrubbing
   gameIcon: {fileID: 0}
-  prompt: Squeegee!
+  announcerText: Squeegee!
+  announcerAudioFile: Squeegee-RX10MDc_292-01
+  _announcerAudio: {fileID: 8300000, guid: 3c0495f0d6f0cd04bac03e8f6809bbe6, type: 3}
   singlePlayerScene: {fileID: 0}
   twoPlayerScene: {fileID: 102900000, guid: 7148ebd6aed9edb42ba67be9b6603936, type: 3}
   controls:

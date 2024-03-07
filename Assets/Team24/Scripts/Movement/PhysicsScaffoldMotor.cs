@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -57,10 +56,6 @@ namespace team24
 
         void FixedUpdate()
         {
-            // Don't apply anything if the game is over (to allow for explosion/being dropped)
-            if (MicrogamesManager.Instance.state == MicrogamesManager.GameState.MiniGameCompleted)
-                return;
-
             direction = stick.normalized;
 
             //Acceleration

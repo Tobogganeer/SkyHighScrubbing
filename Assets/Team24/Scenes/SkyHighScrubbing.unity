@@ -404,7 +404,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: B
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0b022f5418714f24388edb2692e9f733, type: 2}
   m_sharedMaterial: {fileID: -2848667779385903524, guid: 0b022f5418714f24388edb2692e9f733, type: 2}
@@ -1273,6 +1273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aThreshold: 0.75
   fThreshold: 0.25
+  panelCleanThreshold: 0.65
   scaffolding: {fileID: 1939651574}
   scaffoldWires: {fileID: 3279891509427311288}
   endScreens:
@@ -1282,24 +1283,28 @@ MonoBehaviour:
     - {fileID: 5684583995468067912}
     - {fileID: 5684583995468067911}
     - {fileID: 5684583995468067910}
+    material: {fileID: 0}
   - dirt: {fileID: 1509576490}
     window: {fileID: 5684583995468067909}
     endScreens:
     - {fileID: 5684583995468067908}
     - {fileID: 5684583995468067907}
     - {fileID: 5684583995468067906}
+    material: {fileID: 0}
   - dirt: {fileID: 1644183004}
     window: {fileID: 5684583995468067905}
     endScreens:
     - {fileID: 5684583995468067904}
     - {fileID: 5684583995468067903}
     - {fileID: 5684583995468067902}
+    material: {fileID: 0}
   - dirt: {fileID: 1644183004}
     window: {fileID: 5684583995468067901}
     endScreens:
     - {fileID: 5684583995468067900}
     - {fileID: 5684583995468067899}
     - {fileID: 5684583995468067898}
+    material: {fileID: 0}
   letterGradeText: {fileID: 672928438}
   letterGradeSize:
     serializedVersion: 2
