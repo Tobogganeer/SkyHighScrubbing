@@ -20,7 +20,7 @@ MonoBehaviour:
   announcerAudioFile: Squeegee-RX10MDc_292-01
   _announcerAudio: {fileID: 8300000, guid: 3c0495f0d6f0cd04bac03e8f6809bbe6, type: 3}
   singlePlayerScene: {fileID: 0}
-  twoPlayerScene: {fileID: 102900000, guid: 7148ebd6aed9edb42ba67be9b6603936, type: 3}
+  twoPlayerScene: {fileID: 102900000, guid: 0553fe1d4158d84419ce97c1aa1d581a, type: 3}
   controls:
   - label: Move Squeegee
     primary: 124
@@ -40,7 +40,7 @@ MonoBehaviour:
     joiner: 0
     secondary: 26
   singlePlayerScenePath: 
-  twoPlayerScenePath: Assets/Team24/Scenes/SkyHighScrubbing.unity
+  twoPlayerScenePath: Assets/Team24/Scenes/SkyHighScrubbing 1.unity
   postgameMessages:
   - Squeaky clean!
   - Crystal clear!
@@ -57,4 +57,14 @@ MonoBehaviour:
     creator: Greg Zaal & Jarod Guest
     source: PolyHaven
     url: https://polyhaven.com/a/table_mountain_2_puresky
+    licence: CC0
+  - titleOfWork: 'Level Win '
+    creator: Tuudurt
+    source: Freesound
+    url: https://freesound.org/people/Tuudurt/sounds/258142/
+    licence: CC0
+  - titleOfWork: Mr Comdey
+    creator: Peter Millrose
+    source: Westar Music
+    url: https://westarmusic.sourceaudio.com/track/21836006
     licence: CC0
