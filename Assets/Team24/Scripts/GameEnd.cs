@@ -1,29 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace team24
 {
     public class GameEnd : MicrogameEvents
     {
         [Range(0f, 1f)]
-        public float cleanThreshold = 0.85f;
+        public float aThreshold = 0.75f;
+        [Range(0f, 1f)]
+        public float fThreshold = 0.25f;
 
         [Space]
         public PhysicsScaffoldMotor scaffolding;
         public GameObject scaffoldWires;
+
+        [Space]
         public GameObject window;
         public GameObject dirt;
         public GameObject[] endScreens;
+
+        [Space]
+        public TextMeshProUGUI letterGradeText;
+        public AnimationCurve letterGradeSize;
+        public float letterGradeRotation = 5f;
+
+        static readonly string[] LetterGrades = { "F", "D", "C", "B", "A" };
+        const float EndOfRoundTime = 3.5f;
+
+
+        private void Start()
+        {
+            // Make the text empty
+            letterGradeText.text = "";
+            // Rotate it randomly a small amount
+            letterGradeText.rectTransform.Rotate(0, 0, Random.Range(-letterGradeRotation, letterGradeRotation));
+        }
 
         protected override void OnTimesUp()
         {
             float amountCleaned = Dirt.CalculateTotalCleanedPercent();
             Debug.Log("Cleaned " + amountCleaned * 100 + " percent of dirt.");
-            if (amountCleaned >= cleanThreshold)
+
+            // Not a very hard "victory"...
+            if (amountCleaned >= fThreshold)
                 Victory();
             else
                 Failure();
+
+            CalculateLetterGrade(amountCleaned);
+            StartCoroutine(ScaleLetterGrade());
         }
 
         void Victory()
@@ -57,6 +84,37 @@ namespace team24
 
             // Turn off collisions (let them fall out of map)
             scaffolding.GetComponent<BoxCollider>().enabled = false;
+        }
+
+        void CalculateLetterGrade(float percentCleaned)
+        {
+            string grade;
+
+            // If you succeeded expectations
+            if (percentCleaned > aThreshold)
+                grade = "A+";
+            // Otherwise...
+            else
+            {
+                percentCleaned = Mathf.Clamp(percentCleaned, fThreshold, aThreshold);
+                // 0-1, F-A
+                float fac = Mathf.InverseLerp(fThreshold, aThreshold, percentCleaned);
+                int index = Mathf.CeilToInt(fac * LetterGrades.Length) - 1;
+                grade = LetterGrades[index];
+            }
+
+            letterGradeText.text = grade;
+        }
+
+        IEnumerator ScaleLetterGrade()
+        {
+            float lifeTime = 0;
+            while (lifeTime < EndOfRoundTime)
+            {
+                lifeTime += Time.deltaTime;
+                letterGradeText.rectTransform.localScale = Vector3.one * letterGradeSize.Evaluate(lifeTime / EndOfRoundTime);
+                yield return null;
+            }
         }
     }
 }
