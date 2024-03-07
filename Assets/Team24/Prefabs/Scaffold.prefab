@@ -355,9 +355,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getInputFrom: 1
-  controlMode: 1
+  controlMode: 0
   squeegeeObj: {fileID: 4005929431254294982}
-  maxLength: 1.65
+  maxLength: 1.75
   lerpSpeed: 10
   moveLerpSpeed: 8
   rotateSlerpSpeed: 4
@@ -623,11 +623,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getInputFrom: 2
-  buttonSpeed: 10
-  joystickSpeed: 3.5
-  acceleration: 5
-  xBounds: {x: -4.8, y: 4.8}
-  yBounds: {x: -4.65, y: 2.65}
 --- !u!114 &5594048150229669190
 MonoBehaviour:
   m_ObjectHideFlags: 0
