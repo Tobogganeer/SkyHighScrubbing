@@ -15,7 +15,7 @@ MonoBehaviour:
   includeInRandomizer: 1
   teamNumber: 24
   gameTitle: Sky-High Scrubbing
-  gameIcon: {fileID: 0}
+  gameIcon: {fileID: 21300000, guid: 5e09699f40c1fc8429892dced0aaadc5, type: 3}
   announcerText: Squeegee!
   announcerAudioFile: Squeegee-RX10MDc_292-01
   _announcerAudio: {fileID: 8300000, guid: 3c0495f0d6f0cd04bac03e8f6809bbe6, type: 3}
@@ -49,7 +49,7 @@ MonoBehaviour:
   - Squeaky clean!
   - Crystal clear!
   - Who does clean all that glass?
-  bannerImage: {fileID: 0}
+  bannerImage: {fileID: 21300000, guid: 5cb647c0480cfeb4e9ab3fe65eacd3af, type: 3}
   developerCredits:
   - Luka Vukmanovic
   - Chen Wang

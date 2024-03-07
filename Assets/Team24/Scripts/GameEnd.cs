@@ -49,7 +49,7 @@ namespace team24
         protected override void OnTimesUp()
         {
             float amountCleaned = Dirt.CalculateTotalCleanedPercent();
-            Debug.Log("Cleaned " + amountCleaned * 100 + " percent of dirt.");
+            //Debug.Log("Cleaned " + amountCleaned * 100 + " percent of dirt.");
 
             // Not a very hard "victory"...
             if (amountCleaned < fThreshold)
