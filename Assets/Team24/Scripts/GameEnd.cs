@@ -68,7 +68,7 @@ namespace team24
             foreach (SpringJoint joint in wireBottomJoints)
                 Destroy(joint); // Disconnect cables
 
-            // Launch them into space (temporary lol)
+            // Drop them down (for failing to meet quota)
             Rigidbody rb = scaffolding.GetComponent<Rigidbody>();
             rb.useGravity = true;
             //rb.AddExplosionForce(1000f, Vector3.down * 5, 20f);
