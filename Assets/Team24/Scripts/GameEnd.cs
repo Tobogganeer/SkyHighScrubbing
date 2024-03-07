@@ -52,16 +52,15 @@ namespace team24
             Debug.Log("Cleaned " + amountCleaned * 100 + " percent of dirt.");
 
             // Not a very hard "victory"...
-            if (amountCleaned >= fThreshold)
-                Victory();
-            else
+            if (amountCleaned < fThreshold)
                 Failure();
 
+            CalculateClearedWindows();
             CalculateLetterGrade(amountCleaned);
             StartCoroutine(ScaleLetterGrade());
         }
 
-        void Victory()
+        void CalculateClearedWindows()
         {
             // Hide the window (temporary, make clear later)
             //window.SetActive(false);
