@@ -16,7 +16,7 @@ MonoBehaviour:
   teamNumber: 24
   gameTitle: Sky-High Scrubbing
   gameIcon: {fileID: 21300000, guid: 5e09699f40c1fc8429892dced0aaadc5, type: 3}
-  announcerText: Squeegee!
+  announcerText: Squeegee
   announcerAudioFile: Squeegee-RX10MDc_292-01
   _announcerAudio: {fileID: 8300000, guid: 3c0495f0d6f0cd04bac03e8f6809bbe6, type: 3}
   singlePlayerScene: {fileID: 0}
