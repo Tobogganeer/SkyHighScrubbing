@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
 namespace team24
 {
     public class GameEnd : MicrogameEvents
@@ -27,6 +28,11 @@ namespace team24
         static readonly string[] LetterGrades = { "F", "D", "C", "B", "A" };
         const float EndOfRoundTime = 3.5f;
 
+        public AudioSource FailSFX;
+        public AudioClip Fail_Sfx;
+
+        public AudioSource SuccsessSFX;
+        public AudioClip Succsess_Sfx;
 
         private void Start()
         {
@@ -76,6 +82,8 @@ namespace team24
 
             // Turn off collisions (let them fall out of map)
             scaffolding.GetComponent<BoxCollider>().enabled = false;
+
+            
         }
 
         void CalculateLetterGrade(float percentCleaned)
@@ -97,6 +105,12 @@ namespace team24
                 int index = Mathf.CeilToInt(fac * LetterGrades.Length) - 1;
                 grade = LetterGrades[index];
             }
+
+            if (grade == "F"|| grade == "D"|| grade == "C")
+                FailSFX.Play();
+            
+            else if (grade == "B"|| grade ==  "A")
+                SuccsessSFX.Play();
 
             letterGradeText.text = grade;
         }
