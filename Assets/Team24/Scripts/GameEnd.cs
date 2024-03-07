@@ -10,7 +10,8 @@ namespace team24
         public float cleanThreshold = 0.85f;
 
         [Space]
-        public ScaffoldMotor scaffolding;
+        public PhysicsScaffoldMotor scaffolding;
+        public GameObject scaffoldWires;
         public GameObject window;
         public GameObject dirt;
         public GameObject[] endScreens;
@@ -39,13 +40,23 @@ namespace team24
 
         void Failure()
         {
-            // Turn it off to avoid them interfering
+            // Turn off controls to avoid it interfering
             scaffolding.enabled = false;
 
+            // Deparent the wires - the scaffolding will fall away from them
+            scaffoldWires.transform.SetParent(null);
+
             // Launch them into space (temporary lol)
-            Rigidbody rb = scaffolding.gameObject.GetComponent<Rigidbody>();
-            rb.AddExplosionForce(1000f, Vector3.down * 5, 20f);
-            rb.AddTorque(new Vector3(Random.value * 100f, Random.value * 100f, Random.value * 100f));
+            Rigidbody rb = scaffolding.GetComponent<Rigidbody>();
+            rb.useGravity = true;
+            //rb.AddExplosionForce(1000f, Vector3.down * 5, 20f);
+            // Send it randomly to the side
+            float force = 2f;
+            rb.AddForce(new Vector3(Random.Range(-force, force), 0), ForceMode.VelocityChange);
+            rb.AddTorque(new Vector3(0f, 0f, (Random.value * 2f - 1f) * 10f));
+
+            // Turn off collisions (let them fall out of map)
+            scaffolding.GetComponent<BoxCollider>().enabled = false;
         }
     }
 }
