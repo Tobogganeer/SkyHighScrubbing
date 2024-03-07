@@ -48,6 +48,8 @@ MonoBehaviour:
   - Jonathan To
   - Shane Morrison
   - Evan Daveikis
+  - Claudia Rando (MSSS)
+  - Kathleen Hutten (MSSS)
   licensedWorksCredits:
   - titleOfWork: Table Mountain 2 (HDRI)
     creator: Greg Zaal & Jarod Guest
@@ -64,3 +66,13 @@ MonoBehaviour:
     source: Westar Music
     url: https://westarmusic.sourceaudio.com/track/21836006
     licence: CC0
+  - titleOfWork: Glass Cleaning Sounds
+    creator: Claudia Rando
+    source: MSSS
+    url: https://drive.google.com/file/d/1oXeQlmzrIE4AQ30RNI_GT81rC34qbEN6/view
+    licence: Unknown
+  - titleOfWork: City Soundscape
+    creator: Kathleen Hutten
+    source: Soundly
+    url: https://drive.google.com/file/d/1lfMjgu4ZiBpRqWjKkjJbNIahR8Nm0AlC/view
+    licence: Unknown
