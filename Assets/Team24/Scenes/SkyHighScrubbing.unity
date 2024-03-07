@@ -1275,6 +1275,9 @@ MonoBehaviour:
   fThreshold: 0.25
   scaffolding: {fileID: 1939651574}
   scaffoldWires: {fileID: 3279891509427311288}
+  wireBottomJoints:
+  - {fileID: 1488696927}
+  - {fileID: 2036338627}
   endScreens:
   - {fileID: 5684583995468067901}
   - {fileID: 5684583995468067900}
@@ -1838,6 +1841,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 30, y: 0.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!145 &1488696927 stripped
+SpringJoint:
+  m_CorrespondingSourceObject: {fileID: 7025372066965267643, guid: 335ddfd9759387c47bf423965aa1408b, type: 3}
+  m_PrefabInstance: {fileID: 3279891509427311287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1939651574 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5594048150229669190, guid: 335ddfd9759387c47bf423965aa1408b, type: 3}
@@ -1849,6 +1857,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6eabbee0a9bf524cad27186c3d3a3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!145 &2036338627 stripped
+SpringJoint:
+  m_CorrespondingSourceObject: {fileID: 4808778078662548187, guid: 335ddfd9759387c47bf423965aa1408b, type: 3}
+  m_PrefabInstance: {fileID: 3279891509427311287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3279891509427311287
 PrefabInstance:
   m_ObjectHideFlags: 0

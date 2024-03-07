@@ -15,6 +15,7 @@ namespace team24
         [Space]
         public PhysicsScaffoldMotor scaffolding;
         public GameObject scaffoldWires;
+        public SpringJoint[] wireBottomJoints;
 
         [Space]
         public EndPanel[] endScreens;
@@ -64,6 +65,8 @@ namespace team24
 
             // Deparent the wires - the scaffolding will fall away from them
             scaffoldWires.transform.SetParent(null);
+            foreach (SpringJoint joint in wireBottomJoints)
+                Destroy(joint); // Disconnect cables
 
             // Launch them into space (temporary lol)
             Rigidbody rb = scaffolding.GetComponent<Rigidbody>();
