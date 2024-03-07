@@ -111,14 +111,20 @@ namespace team24
             }
         }
 
+        public static event System.Action<Vector3> DirtCleaned;
+
         /// <summary>
         /// Cleans the position closest to <paramref name="position"/>.
         /// </summary>
         /// <param name="position"></param>
         public static void Clean(Vector3 position)
         {
-            foreach (Dirt dirt in allDirt)
-                dirt.GetClosestArea(position).IsClean = true;
+            CPUArea area = GetClosestDirt(position).GetClosestArea(position);
+            if (!area.IsClean)
+            {
+                area.IsClean = true;
+                DirtCleaned?.Invoke(position);
+            }
         }
 
         /// <summary>
@@ -128,11 +134,26 @@ namespace team24
         /// <returns></returns>
         public static bool IsClean(Vector3 position)
         {
-            bool isClean = false;
-            foreach (Dirt dirt in allDirt)
-                isClean |= dirt.GetClosestArea(position).IsClean;
+            return GetClosestDirt(position).GetClosestArea(position).IsClean;
+        }
 
-            return isClean;
+        static Dirt GetClosestDirt(Vector3 position)
+        {
+            Dirt closest = null;
+            float sqrDist = float.PositiveInfinity;
+
+            // Very inefficient! Looping hundreds of times...
+            foreach (Dirt dirt in allDirt)
+            {
+                float currentSqrDist = (dirt.transform.position - position).sqrMagnitude;
+                if (currentSqrDist < sqrDist)
+                {
+                    closest = dirt;
+                    sqrDist = currentSqrDist;
+                }
+            }
+
+            return closest;
         }
 
         CPUArea GetClosestArea(Vector3 position)
