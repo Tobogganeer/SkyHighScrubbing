@@ -7,6 +7,8 @@ namespace team24
 {
     public class ScaffoldMotor : MicrogameInputEvents
     {
+        // This is old, unused code
+        /*
         [SerializeField] float buttonSpeed = 10f;
         [SerializeField] float joystickSpeed = 3f;
         [SerializeField] float acceleration = 5f;
@@ -22,7 +24,6 @@ namespace team24
 
         public static bool UsingButtons { get; private set; }
 
-        #region Button overrides
         /*
         protected override void OnButton1Pressed(InputAction.CallbackContext context)
         {
@@ -51,8 +52,7 @@ namespace team24
             Debug.Log("Stop action 2");
 
         }
-        */
-        #endregion
+        *
 
         void Update()
         {
@@ -78,7 +78,7 @@ namespace team24
             }
             else
             {
-            */
+            *
             targetVelocity = direction * joystickSpeed;
             //transform.Translate(direction * joystickSpeed * Time.deltaTime);
             // The squeegee can go
@@ -103,5 +103,6 @@ namespace team24
             Vector3 size = max - min;
             Gizmos.DrawWireCube(min + size / 2f, size);
         }
+        */
     }
 }

@@ -80,8 +80,8 @@ namespace team24
         private void Update()
         {
             // Don't squeegee if we are moving quickly up or down
-            if (ScaffoldMotor.UsingButtons)
-                return;
+            //if (ScaffoldMotor.UsingButtons)
+            //    return;
 
             squeegeeCam.Render();
             Blit(cleanedTex, cleanedBufferTex, copyTextureMat); // Move the current data in the buffer
