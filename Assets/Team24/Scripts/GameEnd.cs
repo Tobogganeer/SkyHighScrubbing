@@ -17,9 +17,7 @@ namespace team24
         public GameObject scaffoldWires;
 
         [Space]
-        public GameObject window;
-        public GameObject dirt;
-        public GameObject[] endScreens;
+        public EndPanel[] endScreens;
 
         [Space]
         public TextMeshProUGUI letterGradeText;
@@ -56,13 +54,13 @@ namespace team24
         void Victory()
         {
             // Hide the window (temporary, make clear later)
-            window.SetActive(false);
-            dirt.SetActive(false);
-            // Show a random end screen
-            int endScreen = Random.Range(0, endScreens.Length);
-            for (int i = 0; i < endScreens.Length; i++)
-                endScreens[i].SetActive(i == endScreen);
-            scaffolding.gameObject.SetActive(false);
+            //window.SetActive(false);
+            //dirt.SetActive(false);
+            //// Show a random end screen
+            //int endScreen = Random.Range(0, endScreens.Length);
+            //for (int i = 0; i < endScreens.Length; i++)
+            //    endScreens[i].SetActive(i == endScreen);
+            //scaffolding.gameObject.SetActive(false);
         }
 
         void Failure()
@@ -115,6 +113,14 @@ namespace team24
                 letterGradeText.rectTransform.localScale = Vector3.one * letterGradeSize.Evaluate(lifeTime / EndOfRoundTime);
                 yield return null;
             }
+        }
+
+        [System.Serializable]
+        public class EndPanel
+        {
+            public Dirt dirt;
+            public MeshRenderer window;
+            public GameObject[] endScreens;
         }
     }
 }
