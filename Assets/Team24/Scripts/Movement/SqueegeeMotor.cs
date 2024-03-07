@@ -10,7 +10,9 @@ namespace team24
         Vector2 desiredPos;
         [SerializeField] float maxLength;
         [SerializeField] GameObject squeegeeObj;
+        [SerializeField] float extensionSpeed;
         [SerializeField] float lerpSpeed;
+        [SerializeField] float rotationSpeed;
 
         WiperPlayerMotor wiper;
 
@@ -55,13 +57,10 @@ namespace team24
 
         void Update()
         {
-            if (stick != Vector2.zero)
-            {
-                direction = stick.normalized;
-            }
+            direction = stick.normalized;
 
-            //Handle rotation
-            Quaternion desiredRot = Quaternion.LookRotation(Vector3.forward, direction);
+            /*//Handle rotation
+            /*Quaternion desiredRot = Quaternion.LookRotation(Vector3.forward, direction);
 
             if (Vector3.Distance(squeegeeObj.transform.position, transform.position) > 0.1f)
             {
@@ -96,15 +95,46 @@ namespace team24
 
             //Handle movement
             Vector2 pos2d;
+            
             if (stick == Vector2.zero) 
             {
                 pos2d = Vector2.Lerp(squeegeeObj.transform.position, transform.position, lerpSpeed * Time.deltaTime);
             }
             else
             {
-                pos2d = Vector2.Lerp(squeegeeObj.transform.position, desiredPos, lerpSpeed * Time.deltaTime);
+                pos2d = Vector2.Lerp(squeegeeObj.transform.position, transform.position, lerpSpeed * Time.deltaTime);
             }
 
+            squeegeeObj.transform.position = new Vector3(pos2d.x, pos2d.y, squeegeeObj.transform.position.z);
+            */
+
+            Vector2 currentPos = new Vector2(transform.position.x, transform.position.y);
+            Vector2 pos2d = new Vector2(squeegeeObj.transform.position.x, squeegeeObj.transform.position.y);
+
+            desiredPos = currentPos + new Vector2(squeegeeObj.transform.up.x, squeegeeObj.transform.up.y) * maxLength;
+
+            if (direction != Vector2.zero)
+            {
+                if (direction.y > 0)
+                {
+                    if (squeegeeObj.transform.position.y < maxLength)
+                    {
+                        pos2d = Vector2.Lerp(squeegeeObj.transform.position, desiredPos, extensionSpeed * Time.deltaTime);
+                    }
+                }
+                else if (direction.y < 0)
+                {
+                    pos2d = Vector2.Lerp(squeegeeObj.transform.position, transform.position, extensionSpeed * Time.deltaTime);
+                }
+                if (direction.x < 0)
+                {
+                    squeegeeObj.transform.RotateAround(transform.position, Vector3.forward, rotationSpeed * Time.deltaTime);
+                }
+                else if (direction.x > 0)
+                {
+                    squeegeeObj.transform.RotateAround(transform.position, Vector3.forward, -rotationSpeed * Time.deltaTime);
+                }
+            }
 
             squeegeeObj.transform.position = new Vector3(pos2d.x, pos2d.y, squeegeeObj.transform.position.z);
         }
