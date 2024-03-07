@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JoystickAnimation : MicrogameInputEvents
+namespace team24
 {
-    public float rotateSlerpSpeed = 5f;
-    public float rotationAmountDegrees = 45f;
-
-    void Update()
+    public class JoystickAnimation : MicrogameInputEvents
     {
-        Vector2 dir = stick.normalized;
-        Quaternion rot = Quaternion.Euler(dir.y * rotationAmountDegrees, 0f, -dir.x * rotationAmountDegrees);
+        public float rotateSlerpSpeed = 5f;
+        public float rotationAmountDegrees = 45f;
 
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, rot, Time.deltaTime * rotateSlerpSpeed);
+        void Update()
+        {
+            Vector2 dir = stick.normalized;
+            Quaternion rot = Quaternion.Euler(dir.y * rotationAmountDegrees, 0f, -dir.x * rotationAmountDegrees);
+
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, rot, Time.deltaTime * rotateSlerpSpeed);
+        }
     }
 }
