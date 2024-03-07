@@ -1110,9 +1110,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getInputFrom: 1
-  maxLength: 2.5
+  maxLength: 2
   squeegeeObj: {fileID: 577844424}
+  extensionSpeed: 4
   lerpSpeed: 10
+  rotationSpeed: 120
+  deactivateMovement: 0
 --- !u!114 &416558265
 MonoBehaviour:
   m_ObjectHideFlags: 0
