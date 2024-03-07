@@ -11,6 +11,8 @@ namespace team24
         public float aThreshold = 0.75f;
         [Range(0f, 1f)]
         public float fThreshold = 0.25f;
+        [Range(0f, 1f)]
+        public float panelCleanThreshold = 0.65f;
 
         [Space]
         public PhysicsScaffoldMotor scaffolding;
@@ -25,7 +27,11 @@ namespace team24
         public float letterGradeRotation = 5f;
 
         static readonly string[] LetterGrades = { "F", "D", "C", "B", "A" };
+        static readonly int _Alpha = Shader.PropertyToID("_Alpha");
+        static readonly int _Metallic = Shader.PropertyToID("_Metallic");
+        static readonly int _Smoothness = Shader.PropertyToID("_Smoothness");
         const float EndOfRoundTime = 3.5f;
+        const float WindowFadeTime = 1.0f;
 
 
         private void Start()
@@ -34,6 +40,10 @@ namespace team24
             letterGradeText.text = "";
             // Rotate it randomly a small amount
             letterGradeText.rectTransform.Rotate(0, 0, Random.Range(-letterGradeRotation, letterGradeRotation));
+
+            // Get a copy of each window's material
+            foreach (EndPanel panel in endScreens)
+                panel.material = panel.window.material;
         }
 
         protected override void OnTimesUp()
@@ -61,6 +71,14 @@ namespace team24
             //for (int i = 0; i < endScreens.Length; i++)
             //    endScreens[i].SetActive(i == endScreen);
             //scaffolding.gameObject.SetActive(false);
+
+            foreach (EndPanel panel in endScreens)
+            {
+                // Check if each panel is cleaned
+                float cleaned = panel.dirt.CalculateCleanedPercent();
+                if (cleaned > panelCleanThreshold)
+                    StartCoroutine(ClearPanel(panel));
+            }
         }
 
         void Failure()
@@ -88,9 +106,12 @@ namespace team24
         {
             string grade;
 
-            // If you succeeded expectations
+            // If you succeeded expectations...
             if (percentCleaned > aThreshold)
                 grade = "A+";
+            // ...or if you completely failed them...
+            else if (percentCleaned < fThreshold)
+                grade = "F";
             // Otherwise...
             else
             {
@@ -115,12 +136,49 @@ namespace team24
             }
         }
 
+        IEnumerator ClearPanel(EndPanel panel)
+        {
+            // Turn on a random end scene
+            int endScreen = Random.Range(0, panel.endScreens.Length);
+            for (int i = 0; i < panel.endScreens.Length; i++)
+                panel.endScreens[i].SetActive(i == endScreen);
+
+            Material mat = panel.material;
+            float smoothness = mat.GetFloat(_Smoothness);
+            float metallic = mat.GetFloat(_Metallic);
+
+            float fade = 0;
+            while (fade < WindowFadeTime)
+            {
+                // Slowly make the window transparent
+                fade += Time.deltaTime;
+                float highToLowFac = Mathf.Clamp01(1f - fade / WindowFadeTime);
+
+                mat.SetFloat(_Alpha, highToLowFac);
+                mat.SetFloat(_Smoothness, smoothness * highToLowFac);
+                mat.SetFloat(_Metallic, metallic * highToLowFac);
+
+                yield return null;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            // Destroy the copies of each window's material
+            foreach (EndPanel panel in endScreens)
+                DestroyImmediate(panel.material);
+        }
+
+
         [System.Serializable]
         public class EndPanel
         {
             public Dirt dirt;
             public MeshRenderer window;
             public GameObject[] endScreens;
+
+            [HideInInspector]
+            public Material material;
         }
     }
 }
