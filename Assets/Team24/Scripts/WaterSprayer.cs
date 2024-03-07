@@ -7,7 +7,7 @@ namespace team24
 {
     public class WaterSprayer : MicrogameInputEvents
     {
-        public GameObject waterSprayPrefab;
+        public GameObject[] waterSprayPrefabs;
         public float cooldown = 1.5f;
         public Vector2 velocityRange = new Vector2(0.5f, 2f);
         public float bonusVerticalVelocity = 1.75f;
@@ -48,7 +48,7 @@ namespace team24
         {
             // Make water face towards camera
             Quaternion rot = Quaternion.LookRotation(Vector3.up, Vector3.back);
-            GameObject spray = Instantiate(waterSprayPrefab, position, rot);
+            GameObject spray = Instantiate(waterSprayPrefabs[Random.Range(0, waterSprayPrefabs.Length)], position, rot);
             spray.transform.Rotate(new Vector3(0, Random.Range(0f, 360f), 0), Space.Self);
             spray.transform.localScale *= Random.Range(scaleRange.x, scaleRange.y);
 
