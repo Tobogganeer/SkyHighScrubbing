@@ -11,10 +11,15 @@ namespace team24
         [SerializeField] float maxLength;
         [SerializeField] GameObject squeegeeObj;
         [SerializeField] float lerpSpeed;
+        [SerializeField] float rotationSpeed = 360f;
+        public float extensionSpeed = 5f;
 
-        WiperPlayerMotor wiper;
+        //WiperPlayerMotor wiper;
 
-        public bool deactivateMovement;
+        //public bool deactivateMovement;
+
+        float targetAngle;
+        float targetLength;
 
         #region Button overrides
         /*
@@ -50,11 +55,35 @@ namespace team24
 
         private void Start()
         {
-            wiper = GetComponent<WiperPlayerMotor>();
+            //wiper = GetComponent<WiperPlayerMotor>();
         }
 
         void Update()
         {
+            direction = stick.normalized;
+
+            // -= because rotation is backwards
+            targetAngle -= direction.x * rotationSpeed * Time.deltaTime;
+            // Make sure we don't go negative or too far
+            targetLength = Mathf.Clamp(targetLength + direction.y * extensionSpeed * Time.deltaTime, 0, maxLength);
+
+            // Huzzah target quaternion (-90 to convert from math space to unity space)
+            Quaternion targetRot = Quaternion.Euler(0, 0, targetAngle - 90f);
+
+            // Calculate the X and Y of the direction, converting the angle to radians
+            float x = Mathf.Cos(targetAngle * Mathf.Deg2Rad);
+            float y = Mathf.Sin(targetAngle * Mathf.Deg2Rad);
+            // Offset from our position to the target
+            Vector3 offset = new Vector3(x, y) * targetLength;
+
+            Vector3 targetPos = transform.position + offset;
+            targetPos.z = squeegeeObj.transform.position.z; // Keep it in line with the squeegee
+
+            squeegeeObj.transform.position = Vector3.Lerp(squeegeeObj.transform.position, targetPos, lerpSpeed * Time.deltaTime);
+            squeegeeObj.transform.rotation = Quaternion.Slerp(squeegeeObj.transform.rotation, targetRot, lerpSpeed * Time.deltaTime);
+           
+
+            /*
             if (stick != Vector2.zero)
             {
                 direction = stick.normalized;
@@ -107,6 +136,7 @@ namespace team24
 
 
             squeegeeObj.transform.position = new Vector3(pos2d.x, pos2d.y, squeegeeObj.transform.position.z);
+            */
         }
     }
 }

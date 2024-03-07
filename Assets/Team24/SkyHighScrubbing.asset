@@ -37,18 +37,16 @@ MonoBehaviour:
     primary: 124
     joiner: 0
     secondary: 0
-  - label: Ascend Quickly
-    primary: 17
+  - label: Spray Water
+    primary: 25
     joiner: 0
-    secondary: 0
-  - label: Descend Quickly
-    primary: 18
-    joiner: 0
-    secondary: 0
+    secondary: 26
   singlePlayerScenePath: 
   twoPlayerScenePath: Assets/Team24/Scenes/SkyHighScrubbing.unity
   postgameMessages:
   - Squeaky clean!
+  - Crystal clear!
+  - Who does clean all that glass?
   bannerImage: {fileID: 0}
   developerCredits:
   - Luka Vukmanovic
