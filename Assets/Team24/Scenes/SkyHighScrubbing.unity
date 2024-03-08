@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d27206c92abd044e88f0ee67d8061c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aThreshold: 0.75
+  aThreshold: 0.7
   fThreshold: 0.25
   scaffolding: {fileID: 1939651574}
   scaffoldWires: {fileID: 3279891509427311288}
