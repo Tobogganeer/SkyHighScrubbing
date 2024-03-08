@@ -626,6 +626,7 @@ MonoBehaviour:
   squeegeeObj: {fileID: 4005929431254294982}
   maxLength: 1.75
   lerpSpeed: 12
+  rotateSpeed: 5
   minLength: 1.2
   sweepSpeed: 5
   moveLerpSpeed: 8
@@ -1164,8 +1165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getInputFrom: 2
-  maxSpeed: 3
-  acceleration: 2
+  maxSpeed: 2.5
+  acceleration: 1
   friction: 0.1
   windForce: 0.5
 --- !u!54 &2320765344041084728
@@ -1807,15 +1808,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7529592267002243143, guid: 96e019ef339f6234bbe8b0d8b2c2b6db, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7529592267002243143, guid: 96e019ef339f6234bbe8b0d8b2c2b6db, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.10000002
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7529592267002243143, guid: 96e019ef339f6234bbe8b0d8b2c2b6db, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7529592267002243143, guid: 96e019ef339f6234bbe8b0d8b2c2b6db, type: 3}
       propertyPath: m_LocalPosition.x
