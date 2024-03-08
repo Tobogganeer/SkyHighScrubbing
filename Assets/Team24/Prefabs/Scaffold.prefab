@@ -622,14 +622,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getInputFrom: 1
-  controlMode: 0
+  controlMode: 1
   squeegeeObj: {fileID: 4005929431254294982}
   maxLength: 1.75
-  lerpSpeed: 10
+  lerpSpeed: 12
+  minLength: 1.2
+  sweepSpeed: 5
   moveLerpSpeed: 8
   rotateSlerpSpeed: 4
   rotationSpeed: 360
   extensionSpeed: 5
+  jetMoveSpeed: 3
   buttonsControlSqueegeeHeadTilt: 0
   squeegeeHead: {fileID: 7333040261174022407}
   headTiltSpeed: 90
