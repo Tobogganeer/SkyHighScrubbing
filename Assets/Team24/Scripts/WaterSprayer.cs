@@ -44,7 +44,7 @@ namespace team24
             }
         }
 
-        void Spawn(Vector3 position)
+        public void Spawn(Vector3 position)
         {
             // Make water face towards camera
             Quaternion rot = Quaternion.LookRotation(Vector3.up, Vector3.back);

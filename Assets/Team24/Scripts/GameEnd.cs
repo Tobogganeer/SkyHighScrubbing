@@ -51,6 +51,9 @@ namespace team24
             // Not a very hard "victory"...
             if (amountCleaned < fThreshold)
                 Failure();
+            // We won, leave gracefully
+            else
+                scaffolding.GetComponent<ScaffoldAnimation>().LeaveScene();
 
             ClearCleanWindows();
             CalculateLetterGrade(amountCleaned);

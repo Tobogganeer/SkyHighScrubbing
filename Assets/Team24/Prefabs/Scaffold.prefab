@@ -569,6 +569,7 @@ GameObject:
   - component: {fileID: 7202202362839169763}
   - component: {fileID: 7993239593557192143}
   - component: {fileID: 863903031374743108}
+  - component: {fileID: 3786386958629579009}
   m_Layer: 0
   m_Name: WiperGuy
   m_TagString: Untagged
@@ -626,7 +627,7 @@ MonoBehaviour:
   squeegeeObj: {fileID: 4005929431254294982}
   maxLength: 1.75
   lerpSpeed: 12
-  rotateSpeed: 5
+  rotateSpeed: 7
   minLength: 1.2
   sweepSpeed: 5
   moveLerpSpeed: 8
@@ -638,6 +639,23 @@ MonoBehaviour:
   squeegeeHead: {fileID: 7333040261174022407}
   headTiltSpeed: 90
   headTiltAngle: 45
+--- !u!114 &3786386958629579009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4278727316968102061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa52bfe286586114bb2446ccdd86cb22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startAnimOffset: {x: 1.5, y: 0.8, z: 0}
+  extendRetractTime: 0.13
+  waitAfterWater: 0.35
+  water: {fileID: 777887402069829336}
+  numWaterSprays: 3
 --- !u!1 &4746320307808702095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,6 +1126,7 @@ GameObject:
   - component: {fileID: 5594048150229669190}
   - component: {fileID: 2320765344041084728}
   - component: {fileID: 1084738009925763899}
+  - component: {fileID: 8582889072530477713}
   m_Layer: 0
   m_Name: Scaffold
   m_TagString: Untagged
@@ -1217,6 +1236,80 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.602527, y: 0.85284084, z: 1.474824}
   m_Center: {x: 0.423, y: 0.42833808, z: 0.03716311}
+--- !u!114 &8582889072530477713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8715386736714922128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940ec503b843d7742a909ddf2967c864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrivalCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 6.188562
+      outSlope: 6.188562
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.04535147
+    - serializedVersion: 3
+      time: 0.56191444
+      value: 1.0039073
+      inSlope: -0.30368543
+      outSlope: -0.30368543
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.23362865
+      outSlope: -0.23362865
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.15604347
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  departureCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0.46797574
+      outSlope: -0.46797574
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.06310665
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2.2823026
+      outSlope: 2.2823026
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.056356788
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  topWaitingPoint: {fileID: 0}
+  arrivalTime: 2
+  departureTime: 2.5
+  squeegee: {fileID: 3786386958629579009}
+  delayBeforeSqueegeeAnim: 1.5
 --- !u!1 &8941994800960924886
 GameObject:
   m_ObjectHideFlags: 0
