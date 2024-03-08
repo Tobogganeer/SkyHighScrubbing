@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 0.1, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2512607640234763946}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45d40f745f98574a9636d2d9e5b31a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpCopies: 50
+  lerpCopies: 100
   squeegeePrefab: {fileID: 5641076599770917567, guid: a2c11c2ed6e5eb64da97c7496c82a530, type: 3}
   cleaningPower: 12
   waterCleaningMultiplier: 7.5
@@ -57,18 +57,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7529592267002243143}
     m_Modifications:
-    - target: {fileID: 3358762977328169150, guid: a2c11c2ed6e5eb64da97c7496c82a530, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358762977328169150, guid: a2c11c2ed6e5eb64da97c7496c82a530, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358762977328169150, guid: a2c11c2ed6e5eb64da97c7496c82a530, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3358762977328169150, guid: a2c11c2ed6e5eb64da97c7496c82a530, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1

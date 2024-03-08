@@ -27,6 +27,7 @@ namespace team24
         {
             lastPosition = transform.position;
             lastRotation = transform.rotation;
+
             // Spawn the copies of the brush
             for (int i = 0; i < lerpCopies; i++)
                 copies.Add(Instantiate(squeegeePrefab, transform).transform);
