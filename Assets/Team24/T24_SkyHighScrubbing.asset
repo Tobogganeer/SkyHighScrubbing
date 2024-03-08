@@ -15,7 +15,7 @@ MonoBehaviour:
   includeInRandomizer: 1
   teamNumber: 24
   gameTitle: Sky-High Scrubbing
-  gameIcon: {fileID: 21300000, guid: d1e2a7a321935eb48aa56e3a539fe9af, type: 3}
+  gameIcon: {fileID: 21300000, guid: 4eefd0253ee0c5c40928e349cb5caf22, type: 3}
   announcerText: Squeegee
   announcerAudioFile: Squeegee-RX10MDc_292-01
   _announcerAudio: {fileID: 8300000, guid: 3c0495f0d6f0cd04bac03e8f6809bbe6, type: 3}
