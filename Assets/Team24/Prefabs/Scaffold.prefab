@@ -569,6 +569,7 @@ GameObject:
   - component: {fileID: 7202202362839169763}
   - component: {fileID: 7993239593557192143}
   - component: {fileID: 863903031374743108}
+  - component: {fileID: 3786386958629579009}
   m_Layer: 0
   m_Name: WiperGuy
   m_TagString: Untagged
@@ -638,6 +639,23 @@ MonoBehaviour:
   squeegeeHead: {fileID: 7333040261174022407}
   headTiltSpeed: 90
   headTiltAngle: 45
+--- !u!114 &3786386958629579009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4278727316968102061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa52bfe286586114bb2446ccdd86cb22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startAnimOffset: {x: 1.5, y: 0.8, z: 0}
+  extendRetractTime: 0.13
+  waitAfterWater: 0.35
+  water: {fileID: 777887402069829336}
+  numWaterSprays: 3
 --- !u!1 &4746320307808702095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,6 +1308,8 @@ MonoBehaviour:
   topWaitingPoint: {fileID: 0}
   arrivalTime: 2
   departureTime: 2.5
+  squeegee: {fileID: 3786386958629579009}
+  delayBeforeSqueegeeAnim: 1.5
 --- !u!1 &8941994800960924886
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,10 @@ namespace team24
         public float arrivalTime = 2.0f;
         public float departureTime = 2.5f;
 
+        [Space]
+        public SqueegeeAnimation squeegee;
+        public float delayBeforeSqueegeeAnim = 1.75f;
+
         PhysicsScaffoldMotor scaffold;
         Rigidbody rb;
         BoxCollider coll;
@@ -25,6 +29,9 @@ namespace team24
             scaffold = GetComponent<PhysicsScaffoldMotor>();
             rb = GetComponent<Rigidbody>();
             coll = GetComponent<BoxCollider>();
+
+            // Queue this up
+            Invoke(nameof(StartSqueegeeAnim), delayBeforeSqueegeeAnim);
 
             // Turn everything off
             SetComponents(false);
@@ -48,7 +55,15 @@ namespace team24
 
             // Turn everything back on
             SetComponents(true);
+            rb.position = target;
+            transform.position = target;
         }
+
+        void StartSqueegeeAnim()
+        {
+            squeegee.PlayStartAnimation();
+        }
+
 
         public void LeaveScene()
         {
@@ -75,6 +90,8 @@ namespace team24
                 transform.position = Vector3.LerpUnclamped(start, target, interpFactor);
                 yield return null;
             }
+
+            transform.position = target;
         }
 
         void SetComponents(bool active)

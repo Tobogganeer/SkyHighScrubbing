@@ -7,7 +7,7 @@ namespace team24
     public class SqueegeeMotor : MicrogameInputEvents
     {
         [SerializeField] ControlMode controlMode;
-        [SerializeField] GameObject squeegeeObj;
+        [SerializeField] public GameObject squeegeeObj;
         [SerializeField] float maxLength;
 
         [Header("Point Towards Joystick")]
