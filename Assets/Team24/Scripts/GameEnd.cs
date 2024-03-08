@@ -17,6 +17,7 @@ namespace team24
         public PhysicsScaffoldMotor scaffolding;
         public GameObject scaffoldWires;
         public SpringJoint[] wireBottomJoints;
+        public GameObject firedPoster;
 
         [Space]
         public EndPanel[] endScreens;
@@ -30,10 +31,8 @@ namespace team24
         const float EndOfRoundTime = 3.5f;
 
         public AudioSource FailSFX;
-        public AudioClip Fail_Sfx;
 
         public AudioSource SuccsessSFX;
-        public AudioClip Succsess_Sfx;
 
         private void Start()
         {
@@ -117,6 +116,10 @@ namespace team24
             
             else if (grade == "B"|| grade ==  "A")
                 SuccsessSFX.Play();
+
+            // A little slap in the face
+            if (grade == "F")
+                firedPoster.SetActive(true);
 
             letterGradeText.text = grade;
         }
