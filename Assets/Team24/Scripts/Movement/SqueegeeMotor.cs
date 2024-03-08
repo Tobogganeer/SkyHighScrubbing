@@ -12,12 +12,19 @@ namespace team24
 
         [Header("Point Towards Joystick")]
         [SerializeField] float lerpSpeed = 5f;
+        [SerializeField] float rotateSpeed = 15f;
+        [Space]
+        [SerializeField] float minLength = 0.5f;
+        [SerializeField] float sweepSpeed = 2f;
 
         [Header("In, Out, Rotate")]
         [SerializeField] float moveLerpSpeed = 8f;
         [SerializeField] float rotateSlerpSpeed = 4f;
         [SerializeField] float rotationSpeed = 360f;
         [SerializeField] float extensionSpeed = 5f;
+
+        [Header("Jet Style")]
+        [SerializeField] float jetMoveSpeed = 10f;
 
         [Header("Squeegee Head Tilt")]
         public bool buttonsControlSqueegeeHeadTilt = true;
@@ -30,19 +37,23 @@ namespace team24
         Vector2 direction;
         Vector2 desiredPos;
 
+        Vector3 lastJetPosition;
+
         float targetAngle = 90;
         float targetLength;
+
+        float sweepTimer;
 
 
         void Update()
         {
-            direction = stick.normalized;
-
             // Choose which controls we are using
-            if (controlMode == ControlMode.PointTowardsJoystick)
+            if (controlMode == ControlMode.PointTowardsJoystick || controlMode == ControlMode.PointTowardsJoystick_Sweep)
                 PointTowardsJoystick();
-            else
+            else if (controlMode == ControlMode.InOutRotate)
                 InOutRotate();
+            else
+                JetStyle();
 
             TiltHead();
         }
@@ -59,14 +70,30 @@ namespace team24
 
             // If the squeegee is held out rotate it smoothly
             if (Vector3.Distance(squeegeeObj.transform.position, transform.position) > 0.1f)
-                squeegeeObj.transform.rotation = Quaternion.Slerp(squeegeeObj.transform.rotation, desiredRot, lerpSpeed * Time.deltaTime);
+                squeegeeObj.transform.rotation = Quaternion.Slerp(squeegeeObj.transform.rotation, desiredRot, rotateSpeed * Time.deltaTime);
             // Otherwise it is close to our body - snap the rotation
             else
                 squeegeeObj.transform.rotation = desiredRot;
 
 
+            float length = maxLength;
+
+            // Sweep if we wanna sweep
+            if (controlMode == ControlMode.PointTowardsJoystick_Sweep)
+            {
+                if (movementIsDesired)
+                {
+                    sweepTimer += Time.deltaTime * sweepSpeed;
+                    length = Mathf.PingPong(sweepTimer, maxLength - minLength) + minLength;
+                }
+                else
+                {
+                    sweepTimer = 0;
+                }
+            }
+
             Vector2 currentPos = new Vector2(transform.position.x, transform.position.y);
-            desiredPos = currentPos + direction * maxLength;
+            desiredPos = currentPos + direction * length;
 
             //Handle movement
             Vector2 pos2d;
@@ -83,6 +110,8 @@ namespace team24
 
         void InOutRotate()
         {
+            direction = stick.normalized;
+
             // -= because rotation is backwards
             targetAngle -= direction.x * rotationSpeed * Time.deltaTime;
             // Make sure we don't go negative or too far
@@ -104,6 +133,25 @@ namespace team24
             squeegeeObj.transform.rotation = Quaternion.Slerp(squeegeeObj.transform.rotation, targetRot, rotateSlerpSpeed * Time.deltaTime);
         }
 
+        void JetStyle()
+        {
+            direction = stick.normalized;
+
+            Vector3 desiredPosition = transform.position;
+            if (stick != Vector2.zero)
+                desiredPosition += (Vector3)stick.normalized * maxLength;
+
+            desiredPosition.z = squeegeeObj.transform.position.z;
+
+            Vector3 desiredDirection = (desiredPosition - lastJetPosition).normalized;
+            Quaternion desiredRotation = Quaternion.LookRotation(Vector3.forward, desiredDirection);
+
+            squeegeeObj.transform.position = Vector3.Lerp(squeegeeObj.transform.position, desiredPosition, jetMoveSpeed * Time.deltaTime);
+            squeegeeObj.transform.rotation = Quaternion.Slerp(squeegeeObj.transform.rotation, desiredRotation, jetMoveSpeed * Time.deltaTime);
+
+            lastJetPosition = squeegeeObj.transform.position;
+        }
+
         void TiltHead()
         {
             // Calculate current tilt
@@ -122,8 +170,10 @@ namespace team24
 
         public enum ControlMode
         {
+            PointTowardsJoystick_Sweep,
             PointTowardsJoystick,
             InOutRotate,
+            JetStyle
         }
     }
 }
