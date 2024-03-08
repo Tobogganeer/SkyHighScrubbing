@@ -12,6 +12,7 @@ namespace team24
 
         [Header("Point Towards Joystick")]
         [SerializeField] float lerpSpeed = 5f;
+        [SerializeField] float rotateSpeed = 15f;
         [Space]
         [SerializeField] float minLength = 0.5f;
         [SerializeField] float sweepSpeed = 2f;
@@ -46,8 +47,6 @@ namespace team24
 
         void Update()
         {
-            direction = stick.normalized;
-
             // Choose which controls we are using
             if (controlMode == ControlMode.PointTowardsJoystick || controlMode == ControlMode.PointTowardsJoystick_Sweep)
                 PointTowardsJoystick();
@@ -71,7 +70,7 @@ namespace team24
 
             // If the squeegee is held out rotate it smoothly
             if (Vector3.Distance(squeegeeObj.transform.position, transform.position) > 0.1f)
-                squeegeeObj.transform.rotation = Quaternion.Slerp(squeegeeObj.transform.rotation, desiredRot, lerpSpeed * Time.deltaTime);
+                squeegeeObj.transform.rotation = Quaternion.Slerp(squeegeeObj.transform.rotation, desiredRot, rotateSpeed * Time.deltaTime);
             // Otherwise it is close to our body - snap the rotation
             else
                 squeegeeObj.transform.rotation = desiredRot;
@@ -111,6 +110,8 @@ namespace team24
 
         void InOutRotate()
         {
+            direction = stick.normalized;
+
             // -= because rotation is backwards
             targetAngle -= direction.x * rotationSpeed * Time.deltaTime;
             // Make sure we don't go negative or too far
@@ -134,6 +135,8 @@ namespace team24
 
         void JetStyle()
         {
+            direction = stick.normalized;
+
             Vector3 desiredPosition = transform.position;
             if (stick != Vector2.zero)
                 desiredPosition += (Vector3)stick.normalized * maxLength;
