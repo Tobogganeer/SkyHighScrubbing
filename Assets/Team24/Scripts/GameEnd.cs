@@ -29,6 +29,7 @@ namespace team24
 
         static readonly string[] LetterGrades = { "F", "D", "C", "B", "A" };
         const float EndOfRoundTime = 3.5f;
+        const float EndOfRoundLetterTime_F = 1.5f;
 
         public AudioSource FailSFX;
 
@@ -127,10 +128,12 @@ namespace team24
         IEnumerator ScaleLetterGrade()
         {
             float lifeTime = 0;
-            while (lifeTime < EndOfRoundTime)
+            float endTime = letterGradeText.text == "F" ? EndOfRoundLetterTime_F : EndOfRoundTime;
+
+            while (lifeTime < endTime)
             {
                 lifeTime += Time.deltaTime;
-                letterGradeText.rectTransform.localScale = Vector3.one * letterGradeSize.Evaluate(lifeTime / EndOfRoundTime);
+                letterGradeText.rectTransform.localScale = Vector3.one * letterGradeSize.Evaluate(lifeTime / endTime);
                 yield return null;
             }
         }
